@@ -1,0 +1,6 @@
+
+function PopulationType ({unDetails}) {
+  return console.log('hi', unDetails);
+
+}; // PopulationType()
+export default PopulationType;
