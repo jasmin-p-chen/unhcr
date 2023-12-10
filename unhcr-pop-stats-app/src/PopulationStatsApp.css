@@ -58,6 +58,10 @@ li:hover {
   margin: 2rem;
 }
 
+.pie {
+  width: 500px;
+}
+
 @media (max-width: 900px) {
 
   body {

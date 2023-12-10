@@ -38,7 +38,7 @@ function SearchForm () {
   return (
     <form onSubmit={ handleSubmit }>
       <label>For country data, choose a year between
-        <input type="text" placeholder="2003-2023" id="year" inputmode="numeric" onChange={ ev => setYear(ev.target.value)}></input>
+        <input type="text" placeholder="2003-2023" id="year" inputMode="numeric" onChange={ ev => setYear(ev.target.value)}></input>
       </label>
 
       <button>Countries</button>

@@ -1,17 +1,19 @@
 // Custom hook for loading API data from UNHCR
+
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 function useAxios (url) {
-  console.log(`url:`, url); // to test
-  
+ 
+  // State for variables
   const [ results, setResults ] = useState( [] );
   const [ loading, setLoading ] = useState( true );
   const [ error, setError ] = useState( null );
 
-  useEffect( () => { loadResults(url) }, [url] );
+  useEffect( () => { loadResults(url) }, [url] ); 
 
-  const loadResults = function () {
+  // AJAX request to the API
+  const loadResults = function (url) {
     axios.get(url)
     .then(results => {
       setResults(results.data.items);
@@ -25,26 +27,15 @@ function useAxios (url) {
     });
   }; // loadResults()
 
-  // useEffect( () => { loadResults() }, [url] );
-
-  // const loadResults = function () {
-  //   axios.get(url)
-  //   .then(results => {
-  //     setResults(results.data.items);
-  //     setLoading(false);
-  //   })
-  //   .catch(error => {
-  //     setError(error);
-  //     setLoading(false);
-  //     console.log(`An error has occured`, error);
-  //     return <p>Unable to load data. Please try again later.</p>
-  //   });
-  // }; // loadResults()
-  // console.log(`axios results:`, results); // to test
+  // console.log( results ); // to test
   return { loading, results, error };
 }; // useAxios()
 
 export { useAxios };
+
+
+
+  // Not sure why my fetch doesn't work - just going to keep using get:
 
   // useEffect( async () => {
 

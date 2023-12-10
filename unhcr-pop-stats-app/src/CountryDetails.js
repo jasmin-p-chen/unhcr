@@ -7,7 +7,7 @@ function CountryDetails () {
 
   const params = useParams();
 
-  const countryRequest = useAxios(`https://api.unhcr.org/population/v1/demographics/?yearFrom=${params.yearNum}&yearTo=${params.yearNum}&coo_all=true&coa=${params.id}&ptype_show=true`);
+  const countryRequest = useAxios(`https://api.unhcr.org/population/v1/demographics/?limit=10000yearFrom=${params.yearNum}&yearTo=${params.yearNum}&coo_all=true&coa=${params.id}&ptype_show=true`);
 
   console.log(`country request: `, countryRequest.results); // to test
 

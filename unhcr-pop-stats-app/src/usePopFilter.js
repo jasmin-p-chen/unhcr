@@ -13,9 +13,9 @@ function usePopFilter (popArray) {
   const hostCommunity = [];
   const unclassified = [];
 
-  for (const group of details) {
+  for (const group of popArray) {
     if (group.pop_type === "REF") {
-      refugees.push(group);
+      refugees.push({group});
     }
     if (group.pop_type === "ROC") {
       refugees.push(group);
