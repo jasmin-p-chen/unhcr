@@ -12,6 +12,8 @@ function StatsUnrwa () {
 
   useEffect( () => { loadDetails()}, [] );
 
+  // This component has not been incorported yet
+  
   const loadDetails = function () {
     axios.get(`https://api.unhcr.org/population/v1/unrwa/?yearFrom=2022&yearTo=2022&coo_all=true&coa=${params.id}`)
     .then(res => {
