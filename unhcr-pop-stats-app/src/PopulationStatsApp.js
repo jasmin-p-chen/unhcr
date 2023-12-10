@@ -4,7 +4,7 @@ import './PopulationStatsApp.css';
 import GlobalStats from './GlobalStats';
 import CountrySearch from './CountrySearch';
 import CountryList from './CountryList';
-import CountryStats from './CountryStats';
+import CountryDetails from './CountryDetails';
 
 function PopulationStatsApp() {
   return (
@@ -23,7 +23,7 @@ function PopulationStatsApp() {
               </div> }>
             </Route>
               <Route path="/countries" element={ <CountryList /> }></Route>
-              <Route path="/countries/:id" element={ <CountryStats /> }></Route>
+              <Route path="/countries/:id" element={ <CountryDetails /> }></Route>
           </Routes>
         </Router>
       </div>

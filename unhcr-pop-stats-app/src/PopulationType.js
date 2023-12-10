@@ -63,7 +63,7 @@ function PopulationType ({details}) {
   const totalUnInternallyDisplaced = internallyDisplaced.reduce((num1, num2) => num1 + num2, 0 );
   const totalUnOthersOfConcern = others.reduce((num1, num2) => num1 + num2, 0 );
 
-  console.log(`unclassified: `, unclassified.length); // to test
+  // console.log(`unclassified: `, unclassified.length); // to test
   // const TotalUnResettled = resettled.reduce((num1, num2) => num1 + num2, 0 );
   // const TotalUnReturned = returned.reduce((num1, num2) => num1 + num2, 0 );
 

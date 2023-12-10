@@ -16,11 +16,11 @@ function GlobalStats () {
   
   function loadResults() {
     axios.get("https://api.unhcr.org/population/v1/population/?yearFrom=2023&yearTo=2023&coo_all=true&coa_all=true")
-    .then(res => {
+    .then( res => {
       setData(res.data.items);
       setLoading(false);
     })
-    .catch((err) => {
+    .catch( err => {
       console.log(err);
       setError(err);
       console.log(`An error has occured`, err);
@@ -55,51 +55,3 @@ function GlobalStats () {
 
 }; // GlobalStats()
 export default GlobalStats;
-
-//   const unhcrDemographics = function () {
-  //     axios.get("https://api.unhcr.org/population/v1/demographics/?yearFrom=2022&yearTo=2022&coo_all=true&coa_all=true&ptype_show=true")
-  //       .then(res => console.log(res))
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //     };
-  //     // unhcrDemographics();
-  
-  //     const unhcrFootnotes = function () {
-  //       axios.get("https://api.unhcr.org/population/v1/footnotes/?yearFrom=2022&yearTo=2022&coo_all=true&coa_all=true&ptype_show=true")
-  //         .then(res => console.log(res))
-  //         .catch((err) => {
-  //           console.log(err);
-  //         });
-  //       };
-  //       // unhcrFootnotes();
-  
-  
-  // const unhcrapplicationsAustralia = function () {
-  //   axios.get("https://api.unhcr.org/population/v1/asylum-applications/?yearFrom=2022&yearTo=2022&coo_all=true&coa=AUS")
-  //     .then(res => console.log(res))
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  //   };
-    // unhcrapplicationsAustralia();
-
-    // const unhcrCountries = function () {
-    //   axios.get("https://api.unhcr.org/population/v1/countries/"
-    //   )
-    //     .then(res => console.log(res))
-    //     .catch((err) => {
-    //       console.log(err);
-    //     });
-    //   };
-    //   unhcrCountries();
-  
-    // const unhcrDecisionsAustralia = function () {
-    //   axios.get("https://api.unhcr.org/population/v1/asylum-decisions/?yearFrom=2022&yearTo=2022&coo_all=true&coa=AUS")
-    //     .then(res => console.log(res))
-    //     .catch((err) => {
-    //       console.log(err);
-    //     });
-    //   };
-      // unhcrDecisionsAustralia();
-  

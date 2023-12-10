@@ -57,73 +57,35 @@ function CountryStatsAge ({details}) {
     }
   }
 
-  let men = 0;
-  let women = 0; 
-  let infants = 0;
-  let children = 0;
-  let teens = 0;
-  let adults = 0;
-  let over60s = 0;
-  
-  let countriesOfOrigin = [];
-  let totalRefugees = 0;
+  const refugeeDemo = useDataFilter(refugees);
+  const asylumSeekerDemo = useDataFilter(asylumSeekers);
+  const statelessDemo = useDataFilter(stateless);
+  const internallyDisplacedDemo = useDataFilter(internallyDisplaced);
+  const otherDemo = useDataFilter(others);
+  const unclassifiedDemo = useDataFilter(unclassified);
 
-  console.log(refugees);
+  // console.log(`refugees: `, refugeeDemo);
+  // console.log(`asylumnSeeekrs: `, asylumSeekerDemo);
+  // console.log(`stateless: `, statelessDemo);
+  // console.log(`internal displacement: `,internallyDisplacedDemo);
+  // console.log(`others: `, otherDemo);
+  // console.log(`unclassified: `, unclassifiedDemo);
 
-  // for (const cohort of refugees) {
-  //   countriesOfOrigin.push({ coo_name: cohort.coo_name, total: cohort.total });
-  //   totalRefugees += parseInt(cohort.total);
-  //   women += parseInt(cohort.f_total);
-  //   men += parseInt(cohort.m_total);
-  //   infants += (parseInt(cohort.m_0_4) + parseInt(cohort.f_0_4));
-  //   children += (parseInt(cohort.m_5_11) + parseInt(cohort.f_5_11));
-  //   teens += (parseInt(cohort.m_12_17) + parseInt(cohort.f_12_17));
-  //   adults += (parseInt(cohort.m_18_59) + parseInt(cohort.f_18_59));
-  //   over60s += (parseInt(cohort.m_60) + parseInt(cohort.f_60));
-  // }
-  // console.log(`women with refugee status: `, women + ` men with refugee status: `, men);
-  // console.log(`infants: `, infants + ` children: `, children);
-  // console.log(countriesOfOrigin);
-  // console.log(totalRefugees);
-
-  // for (const cohort of asylumSeekers) {
-  //   countriesOfOrigin.push({ coo_name: cohort.coo_name, total: cohort.total });
-  //   totalRefugees += parseInt(cohort.total);
-  //   women += parseInt(cohort.f_total);
-  //   men += parseInt(cohort.m_total);
-  //   infants += (parseInt(cohort.m_0_4) + parseInt(cohort.f_0_4));
-  //   children += (parseInt(cohort.m_5_11) + parseInt(cohort.f_5_11));
-  //   teens += (parseInt(cohort.m_12_17) + parseInt(cohort.f_12_17));
-  //   adults += (parseInt(cohort.m_18_59) + parseInt(cohort.f_18_59));
-  //   over60s += (parseInt(cohort.m_60) + parseInt(cohort.f_60));
-  // }
-  // console.log(`women seeking asylum: `, women + ` men seeking asylum: `, men);
-
-  const refugeeStatistics = useDataFilter(refugees);
-  console.log(`refugees: `, refugeeStatistics);
-  const asylumSeekerStatistics = useDataFilter(asylumSeekers);
-  console.log(`asylumnSeeekrs: `, asylumSeekers);
-  const statelessStatistics = useDataFilter(stateless);
-  console.log(`stateless: `, stateless);
-  const internallyDisplacedStatistics = useDataFilter(internallyDisplaced);
-
-  // const refugees = [];
-  // const asylumSeekers = [];
-  // const returned = [];
-  // const stateless = [];
-  // const internallyDisplaced = [];
-  // const others = [];
-  // const resettled = [];
-  // const hostCommunity = [];
-  // const unclassified = [];
+  return (
+    <div>
+      <p>Refugees: {refugeeDemo.totalPop}</p>
+      <p>Asylum Seekers and others in need of international protection: {asylumSeekerDemo.totalPop}</p>
+      <p>Stateless people: {statelessDemo.totalPop}</p>
+      <p>Internally displaced persons: {internallyDisplacedDemo.totalPop}</p>
+      <p>Others of concern to UNHCR: {otherDemo.totalPop}</p>
+    </div>
+  )
 
   // const totalUnRefugees = refugees.reduce((num1, num2) => num1 + num2, 0 );
   // const totalUnAsylumSeekers = asylumSeekers.reduce((num1, num2) => num1 + num2, 0 );
   // const totalUnStateless = stateless.reduce((num1, num2) => num1 + num2, 0 );
   // const totalUnInternallyDisplaced = internallyDisplaced.reduce((num1, num2) => num1 + num2, 0 );
   // const totalUnOthersOfConcern = others.reduce((num1, num2) => num1 + num2, 0 );
-
-  // console.log(`unclassified: `, unclassified.length); // to test
   // // const TotalUnResettled = resettled.reduce((num1, num2) => num1 + num2, 0 );
   // // const TotalUnReturned = returned.reduce((num1, num2) => num1 + num2, 0 );
 
