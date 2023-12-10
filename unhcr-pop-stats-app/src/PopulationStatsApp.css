@@ -1,7 +1,7 @@
 body {
   font-size: 18px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-  margin: -2px;
+  margin: 0 auto;
 }
 
 input, button {
@@ -9,6 +9,14 @@ input, button {
   font-size: inherit;
   margin-left: 1rem;
   padding: 2px 15px 2px 15px;
+}
+
+.main {
+  margin-left: 2rem;
+}
+
+.header {
+  margin-left: 2rem;
 }
 
 .nav {
@@ -24,7 +32,7 @@ input, button {
   color: white;
 }
 
-header a {
+.header a {
   text-decoration: none;
   color: black;
 }
@@ -46,9 +54,6 @@ li:hover {
   cursor: pointer;
 }
 
-.main {
-  margin: 2rem;
-}
 .searchform {
   margin: 2rem;
 }

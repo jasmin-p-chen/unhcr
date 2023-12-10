@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import SearchForm from './SearchForm';
+import { useParams, useNavigate } from 'react-router-dom';
+import CountryFilter from './CountryFilter';
 
 // could list by region as well
 
@@ -11,6 +11,7 @@ function CountryList () {
   const [ loading, setLoading ] = useState( true );
   const [ error, setError ] = useState( null );
   const navigateTo = useNavigate();
+  const params = useParams();
 
   useEffect( () => { loadCountries()}, [] );
   const loadCountries = function () {
@@ -38,14 +39,14 @@ function CountryList () {
   
     return (
       <div>
-        <SearchForm />
+        <CountryFilter />
         <ul>
           {countryList.map((c) => { 
             return <li 
             id={c[1]}
             key={c[1]}
             onClick={
-              () => {navigateTo(`/countries/${c[1]}`)}
+              () => {navigateTo(`/${params.yearNum}/countries/${c[1]}`)}
             }>{c[0]}</li> })}
         </ul>
       </div>

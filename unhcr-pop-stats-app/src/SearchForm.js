@@ -1,36 +1,73 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-// Not sure if it's possible to get the search form to link to the mapped countries ?
-// Otherwise could add a region?
-
 function SearchForm () {
+  //Trying something
+  const [year, setYear ] = useState( 2022 );
 
-  const [ query, setQuery ] = useState( '' ); //state for searchQuery
   const navigateTo = useNavigate();
-  const params = useParams();
-  // console.log(params);
 
-  function handleSubmit ( ev ){
+  function handleSubmit(ev) {
     ev.preventDefault();
-    console.log(`Search input given is`, query );
-    // navigateTo(`search/${ query }`);
-  }; // handleSubmit
+    console.log(`hi:`, year);
+    console.log(typeof year);
+    const yearNum = parseInt(year);
+    console.log(`Year num is:`, yearNum);
+    if (yearNum <= 2023 && yearNum >= 2003 ) {
+      navigateTo(`${yearNum}/countries`)
+    } else {
+      console.log(`invalid year`); // need to give users a message
+    }
+
+    // else if (yearNum > 1973) {
+    //   return <p>Data unavailable or limited before 1973. Try a later year.</p>
+    // } else if (yearNum === null) {
+    //   return <p>please enter a valid number</p>
+    // } else {navigateTo(`${yearNum}/countries`)} 
+    // yearNum < 2023
+    // ? <p>this app does not forecast the future. Try a valid year.</p>
+    // : yearNum > 1973
+    // ? <p>Data unavailable or limited before 1973. Try a later year.</p>
+    // : yearNum === null
+    // ? <p>please enter a valid number</p>
+    // : navigateTo(`${yearNum}/countries`)
+
+  }; // handleSubmit()
   
-  //attempting to make the Search work
-  
-  function handleChange(ev){
-    console.log(ev.target.value);
-    setQuery(ev.target.value);
-  };
 
   return (
-  <form className="searchform" onSubmit={ handleSubmit }>
-    <label>Search for Country or Territory
-      <input type="text" onChange={ handleChange } />
-      <button>Search</button>
-    </label>
-  </form>
-  );
-}; // SearchForm
+    <form onSubmit={ handleSubmit }>
+      <label>For country data, choose a year between
+        <input type="text" placeholder="2003-2023" id="year" inputmode="numeric" onChange={ ev => setYear(ev.target.value)}></input>
+      </label>
+
+      <button>Countries</button>
+    </form>
+    
+  )
+
+  // function handleSubmit ( ev ){
+  //   ev.preventDefault();
+  //   console.log(`Search input given is`, query );
+  //   navigateTo(`search/${ query }`);
+  // }; // handleSubmit
+
+
+
+
+
+
+
+
+
+
+ // END OF Trying something
+
+
+
+  // const navigateTo = useNavigate();
+  // return (
+  //   <button onClick={ () => navigateTo(`./countries`) }>Search Countries</button>
+  // )
+}; // SearchForm()
 export default SearchForm;

@@ -2,28 +2,28 @@ import { Route, Routes, HashRouter as Router, Link } from 'react-router-dom';
 
 import './PopulationStatsApp.css';
 import GlobalStats from './GlobalStats';
-import CountrySearch from './CountrySearch';
+import SearchForm from './SearchForm';
 import CountryList from './CountryList';
 import CountryDetails from './CountryDetails';
 
 function PopulationStatsApp() {
   return (
-    <div className="App">
+    <div>
       <div>
         <Router>
           <div className="nav"> <Link to="./">Home</Link> </div>
           <Routes>   
             <Route path="/" exact element={
-              <div class="main">
-                <header>
+              <div className="header">
+                <div>
                   <Link to="./"><h1>Global Statistics on Forced Displacement</h1></Link>
-                </header>
+                </div>
                 <GlobalStats />
-                <CountrySearch />
+                <SearchForm />
               </div> }>
             </Route>
-              <Route path="/countries" element={ <CountryList /> }></Route>
-              <Route path="/countries/:id" element={ <CountryDetails /> }></Route>
+              <Route path=":yearNum/countries" element={ <CountryList /> }></Route>
+              <Route path=":yearNum/countries/:id" element={ <CountryDetails /> }></Route>
           </Routes>
         </Router>
       </div>
