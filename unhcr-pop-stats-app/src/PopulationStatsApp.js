@@ -11,10 +11,10 @@ function PopulationStatsApp() {
     <div className="App">
       <div>
         <Router>
-          <nav> <Link to="./">Home</Link> </nav>
+          <div className="nav"> <Link to="./">Home</Link> </div>
           <Routes>   
             <Route path="/" exact element={
-              <div>
+              <div class="main">
                 <header>
                   <Link to="./"><h1>Global Statistics on Forced Displacement</h1></Link>
                 </header>

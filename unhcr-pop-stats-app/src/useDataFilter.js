@@ -3,6 +3,7 @@
 function useDataFilter (popArray) {
   
   // console.log(popArray); // to test
+
   let men = 0;
   let women = 0; 
   let infants = 0;

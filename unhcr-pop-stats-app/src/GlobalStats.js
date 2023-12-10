@@ -46,11 +46,9 @@ function GlobalStats () {
 
   return (
     <div>
-      <p>Total refugees: {totalRefugees}</p>
+      <p>Total refugees: {new Intl.NumberFormat().format(totalRefugees)}</p>
       <GlobalChart chartData={dataMapNums} chartLabels={dataLabels} />
     </div>
-    
-
   )
 
 }; // GlobalStats()

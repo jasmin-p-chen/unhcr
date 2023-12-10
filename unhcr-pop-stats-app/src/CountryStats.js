@@ -1,6 +1,10 @@
 import { useDataFilter } from './useDataFilter';
 
-function CountryStatsAge ({details}) {
+function CountryStats ({details}) {
+
+  console.log(`details: `, details);
+  // const arrivalCountry = details[0].coa_name;
+  // const year = details[0].year;
 
   const refugees = [];
   const asylumSeekers = [];
@@ -55,14 +59,20 @@ function CountryStatsAge ({details}) {
     else {
       unclassified.push(group);
     }
-  }
+  };
 
   const refugeeDemo = useDataFilter(refugees);
   const asylumSeekerDemo = useDataFilter(asylumSeekers);
   const statelessDemo = useDataFilter(stateless);
   const internallyDisplacedDemo = useDataFilter(internallyDisplaced);
   const otherDemo = useDataFilter(others);
-  const unclassifiedDemo = useDataFilter(unclassified);
+  // const unclassifiedDemo = useDataFilter(unclassified); // need to look at the data
+
+  const totalForciblyDisplaced = 
+  refugeeDemo.totalPop + 
+  asylumSeekerDemo.totalPop +
+  internallyDisplacedDemo.totalPop + 
+  otherDemo.totalPop;
 
   // console.log(`refugees: `, refugeeDemo);
   // console.log(`asylumnSeeekrs: `, asylumSeekerDemo);
@@ -71,15 +81,32 @@ function CountryStatsAge ({details}) {
   // console.log(`others: `, otherDemo);
   // console.log(`unclassified: `, unclassifiedDemo);
 
-  return (
-    <div>
-      <p>Refugees: {refugeeDemo.totalPop}</p>
-      <p>Asylum Seekers and others in need of international protection: {asylumSeekerDemo.totalPop}</p>
-      <p>Stateless people: {statelessDemo.totalPop}</p>
-      <p>Internally displaced persons: {internallyDisplacedDemo.totalPop}</p>
-      <p>Others of concern to UNHCR: {otherDemo.totalPop}</p>
-    </div>
-  )
+  return ( 
+  <div className="main">
+    {/* <h1>{arrivalCountry}</h1> */}
+    {/* {totalForciblyDisplaced
+    // ? <p>There were {new Intl.NumberFormat().format(totalForciblyDisplaced)} forcibly displaced people located in {arrivalCountry} in {year}</p>
+    : null} */}
+    {refugeeDemo.totalPop
+    ? <p>Refugees: {new Intl.NumberFormat().format(refugeeDemo.totalPop)}</p>
+    : null}
+    {asylumSeekerDemo.totalPop
+    ? <p>Asylum Seekers: {new Intl.NumberFormat().format(asylumSeekerDemo.totalPop)}</p>
+    : null}
+    {statelessDemo.totalPop
+    ? <p>Stateless: {new Intl.NumberFormat().format(statelessDemo.totalPop)}</p>
+    : null}
+    {internallyDisplacedDemo.totalPop
+    ? <p>Internally Displaced: {new Intl.NumberFormat().format(internallyDisplacedDemo.totalPop)}</p>
+    : null}
+    {otherDemo.totalPop
+    ? <p>Others of concern to UNHCR: {new Intl.NumberFormat().format(otherDemo.totalPop)}</p>
+    : null}
+  </div>
+  );
+}; // CountryStats()
+export default CountryStats;
+
 
   // const totalUnRefugees = refugees.reduce((num1, num2) => num1 + num2, 0 );
   // const totalUnAsylumSeekers = asylumSeekers.reduce((num1, num2) => num1 + num2, 0 );
@@ -88,25 +115,3 @@ function CountryStatsAge ({details}) {
   // const totalUnOthersOfConcern = others.reduce((num1, num2) => num1 + num2, 0 );
   // // const TotalUnResettled = resettled.reduce((num1, num2) => num1 + num2, 0 );
   // // const TotalUnReturned = returned.reduce((num1, num2) => num1 + num2, 0 );
-
-  // return (
-  // //   <div>
-  // //     {totalUnRefugees
-  // //     ? <p>Refugees: {totalUnRefugees}</p>
-  // //     : console.log(`no refugees`)}
-  // //     {totalUnAsylumSeekers
-  // //     ? <p>Asylum Seekers: {totalUnAsylumSeekers}</p>
-  // //     : console.log(`no asylum seekers`)}
-  // //     {totalUnStateless
-  // //     ? <p>Stateless: {totalUnStateless}</p>
-  // //     : console.log(`no stateless`)}
-  // //     {totalUnInternallyDisplaced
-  // //     ? <p>Internally Displaced: {totalUnInternallyDisplaced}</p>
-  // //     : console.log(`no internally displaced`)}
-  // //     {totalUnOthersOfConcern
-  // //     ? <p>Others of Concern: {totalUnOthersOfConcern}</p>
-  // //     : console.log(`no others of concern`)}
-  // //   </div>
-  // );
-}; // PopulationType()
-export default CountryStatsAge;

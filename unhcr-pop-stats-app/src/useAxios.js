@@ -9,7 +9,7 @@ function useAxios (url) {
   const [ loading, setLoading ] = useState( true );
   const [ error, setError ] = useState( null );
 
-  useEffect( () => { loadResults()}, [url] );
+  useEffect( () => { loadResults(url) }, [url] );
 
   const loadResults = function () {
     axios.get(url)
@@ -24,8 +24,24 @@ function useAxios (url) {
       return <p>Unable to load data. Please try again later.</p>
     });
   }; // loadResults()
+
+  // useEffect( () => { loadResults() }, [url] );
+
+  // const loadResults = function () {
+  //   axios.get(url)
+  //   .then(results => {
+  //     setResults(results.data.items);
+  //     setLoading(false);
+  //   })
+  //   .catch(error => {
+  //     setError(error);
+  //     setLoading(false);
+  //     console.log(`An error has occured`, error);
+  //     return <p>Unable to load data. Please try again later.</p>
+  //   });
+  // }; // loadResults()
   // console.log(`axios results:`, results); // to test
-  return {loading, results, error };
+  return { loading, results, error };
 }; // useAxios()
 
 export { useAxios };

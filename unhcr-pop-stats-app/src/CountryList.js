@@ -41,7 +41,9 @@ function CountryList () {
         <SearchForm />
         <ul>
           {countryList.map((c) => { 
-            return <li id={c[1]}
+            return <li 
+            id={c[1]}
+            key={c[1]}
             onClick={
               () => {navigateTo(`/countries/${c[1]}`)}
             }>{c[0]}</li> })}

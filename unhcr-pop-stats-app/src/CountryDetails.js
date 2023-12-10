@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useAxios } from './useAxios'; 
 // import PopulationType from './PopulationType';
-import CountryStatsAge from './CountryStatsAge';
+import CountryStats from './CountryStats';
 
 function CountryDetails () {
 
@@ -13,9 +13,7 @@ function CountryDetails () {
 
     return (
       <div>
-        {/* < PopulationType details={countryRequest.results} /> */}
-        < CountryStatsAge details={countryRequest.results} />
-        
+        < CountryStats details={countryRequest.results} />
       </div>
     );
 }; // CountryDetails()
