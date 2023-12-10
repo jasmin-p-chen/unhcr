@@ -9,14 +9,16 @@ function SearchForm () {
   const [ query, setQuery ] = useState( '' ); //state for searchQuery
   const navigateTo = useNavigate();
   const params = useParams();
-  console.log(params);
+  // console.log(params);
 
   function handleSubmit ( ev ){
     ev.preventDefault();
     console.log(`Search input given is`, query );
     // navigateTo(`search/${ query }`);
   }; // handleSubmit
-
+  
+  //attempting to make the Search work
+  
   function handleChange(ev){
     console.log(ev.target.value);
     setQuery(ev.target.value);

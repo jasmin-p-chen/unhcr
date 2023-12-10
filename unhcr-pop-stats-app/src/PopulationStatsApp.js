@@ -16,7 +16,7 @@ function PopulationStatsApp() {
             <Route path="/" exact element={
               <div>
                 <header>
-                  <Link to="./"><h1>Global Statistics on Forced Displacement 2022</h1></Link>
+                  <Link to="./"><h1>Global Statistics on Forced Displacement</h1></Link>
                 </header>
                 <GlobalStats />
                 <CountrySearch />
