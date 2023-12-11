@@ -8,26 +8,24 @@ import CountryDetails from './CountryDetails';
 
 function PopulationStatsApp() {
   return (
-    <div>
-      <div>
-        <Router>
-          <div className="nav"> <Link to="./">Home</Link> </div>
-          <Routes>   
-            <Route path="/" exact element={
-              <div className="header">
-                <div>
-                  <Link to="./"><h1>Global Statistics on Forced Displacement</h1></Link>
-                </div>
-                <GlobalStats />
-                <SearchForm />
-              </div> }>
-            </Route>
-              <Route path=":yearNum/countries" element={ <CountryList /> }></Route>
-              <Route path=":yearNum/countries/:id" element={ <CountryDetails /> }></Route>
-          </Routes>
-        </Router>
-      </div>
-    </div>
+  <div className="container">
+    <Router>
+      <div className="nav"> <Link to="./">Home</Link> </div>
+      <Routes>   
+        <Route path="/" exact element={
+          <div className="main">
+            <div>
+              <Link to="./"><h1>Global Statistics on Forced Displacement</h1></Link>
+            </div>
+            <GlobalStats />
+            <SearchForm />
+          </div> }>
+        </Route>
+        <Route path=":yearNum/countries" element={ <CountryList /> }></Route>
+        <Route path=":yearNum/countries/:id" element={ <CountryDetails /> }></Route>
+      </Routes>
+    </Router>
+  </div>
   );
 } // PopulationStatsApp()
 

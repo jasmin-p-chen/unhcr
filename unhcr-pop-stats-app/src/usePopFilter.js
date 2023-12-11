@@ -15,7 +15,7 @@ function usePopFilter (popArray) {
 
   for (const group of popArray) {
     if (group.pop_type === "REF") {
-      refugees.push({group});
+      refugees.push(group);
     }
     if (group.pop_type === "ROC") {
       refugees.push(group);
@@ -58,10 +58,19 @@ function usePopFilter (popArray) {
     }
   }
 
+  const countryPopTypes = [
+    refugees,
+    asylumSeekers,
+    returned,
+    stateless,
+    internallyDisplaced,
+    others,
+    resettled,
+    hostCommunity,
+    unclassified,
+  ];
 
-  return {
-    totalPop, originCountries, women, men, infants, children, teens, adults, over60s
-  }
+  return countryPopTypes;
 
 }; // usePopFilter()
 export { usePopFilter };

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useAxios } from './useAxios';
 import GlobalChart from './chartComponents/GlobalChart';
-import { useGlobalPopFilter } from './useGlobalPopFilter';
+import { useGlobalPopTypeFilter } from './useGlobalPopTypeFilter';
 
 // Hoping to add a chart and global stats using chrt.js
 
@@ -22,8 +22,8 @@ function GlobalStats () {
 
   const globalDataRequest = useAxios("https://api.unhcr.org/population/v1/population/?limit=10000&yearFrom=2023&yearTo=2023&coo_all=true&coa_all=true");
 
-  let globalData = globalDataRequest.results;
-  // console.log(globalData); // >5000 entries
+  const globalData = globalDataRequest.results;
+  console.log(globalData);
 
   // Chart test
   const [chartData, setChartData] = useState({
@@ -46,8 +46,11 @@ function GlobalStats () {
   });
   // Chart end
 
+  const globalResults = useGlobalPopTypeFilter(globalDataRequest.results);
+  console.log(`states we want: `, globalResults);
+
   const dataMap = globalData.map((country) => {
-    return country.refugees  
+    return country.refugees
   });
   // console.log(dataMap); // to test
   const dataMapNums = dataMap.map(num => {return parseInt(num)});
@@ -57,12 +60,13 @@ function GlobalStats () {
   // console.log(totalRefugees);
 
   const dataLabels = globalData.map((c) => {return c.coo_name});
-  console.log(dataLabels);
+  // console.log(dataLabels);
+
 
   return (
     <div>
       <div className="pie">
-        <PieChart chartData={chartData} />
+        <PieChart chartData={globalResults} />
       </div>
 
     <div>
