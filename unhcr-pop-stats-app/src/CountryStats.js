@@ -1,15 +1,8 @@
-import { useDataFilter } from './dataFilter';
+import dataFilter from './dataFilter';
 
 function CountryStats ({details}) {
 
   console.log(`details: `, details);
-  // details.length > 0
-  // ?
-  // const arrivalCountry = details[0].coa_name;
-  // :
-  // <p>No data</p>
-
-  // const year = details[0].year;
 
   const refugees = [];
   const asylumSeekers = [];
@@ -66,12 +59,12 @@ function CountryStats ({details}) {
     }
   };
 
-  const refugeeDemo = useDataFilter(refugees);
-  const asylumSeekerDemo = useDataFilter(asylumSeekers);
-  const statelessDemo = useDataFilter(stateless);
-  const internallyDisplacedDemo = useDataFilter(internallyDisplaced);
-  const otherDemo = useDataFilter(others);
-  // const unclassifiedDemo = useDataFilter(unclassified); // need to look at the data
+  const refugeeDemo = dataFilter.countryDemographics(refugees);
+  const asylumSeekerDemo = dataFilter.countryDemographics(asylumSeekers);
+  const statelessDemo = dataFilter.countryDemographics(stateless);
+  const internallyDisplacedDemo = dataFilter.countryDemographics(internallyDisplaced);
+  const otherDemo = dataFilter.countryDemographics(others);
+  // const unclassifiedDemo = dataFilter.countryDemographics(unclassified); // need to look at the data
 
   const totalForciblyDisplaced = 
   refugeeDemo.totalPop + 
@@ -89,26 +82,48 @@ function CountryStats ({details}) {
   return ( 
   <div className="main">
     {details.length > 0
-    ? <h1>{details[0].coa_name}</h1>
-    : <p>No data available</p>}
+    ? 
+    details === true
+    : 
+    <p>No data is available</p>
+    }
+
     {totalForciblyDisplaced
-    ? <p>There were {new Intl.NumberFormat().format(totalForciblyDisplaced)} forcibly displaced people located in {details[0].coa_name} in {details[0].year}</p>
-    : null}
+    ? 
+    <p>There were {new Intl.NumberFormat().format(totalForciblyDisplaced)} forcibly displaced people located in {details[0].coa_name} in {details[0].year}</p>
+    : 
+    null
+    }
+    <ul>
     {refugeeDemo.totalPop
-    ? <p>Refugees: {new Intl.NumberFormat().format(refugeeDemo.totalPop)}</p>
-    : null}
+    ? 
+    <li>Refugees: {new Intl.NumberFormat().format(refugeeDemo.totalPop)}</li>
+    : 
+    null}
     {asylumSeekerDemo.totalPop
-    ? <p>Asylum Seekers: {new Intl.NumberFormat().format(asylumSeekerDemo.totalPop)}</p>
-    : null}
+    ? 
+    <li>Asylum Seekers: {new Intl.NumberFormat().format(asylumSeekerDemo.totalPop)}</li>
+    : 
+    null
+    }
     {statelessDemo.totalPop
-    ? <p>Stateless: {new Intl.NumberFormat().format(statelessDemo.totalPop)}</p>
-    : null}
+    ? 
+    <li>Stateless: {new Intl.NumberFormat().format(statelessDemo.totalPop)}</li>
+    : 
+    null
+    }
     {internallyDisplacedDemo.totalPop
-    ? <p>Internally Displaced: {new Intl.NumberFormat().format(internallyDisplacedDemo.totalPop)}</p>
-    : null}
+    ? 
+    <li>Internally Displaced: {new Intl.NumberFormat().format(internallyDisplacedDemo.totalPop)}</li>
+    : 
+    null
+    }
     {otherDemo.totalPop
-    ? <p>Others of concern to UNHCR: {new Intl.NumberFormat().format(otherDemo.totalPop)}</p>
-    : null}
+    ? 
+    <li>Others of concern to UNHCR: {new Intl.NumberFormat().format(otherDemo.totalPop)}</li>
+    : 
+    null}
+    </ul>
   </div>
   );
 }; // CountryStats()

@@ -1,10 +1,16 @@
+import { useNavigate } from 'react-router-dom';
+
 function Menu () {
-  console.log(`hi`);
+
+  const navigateTo = useNavigate();
 
   return (
-    <div>
-
-  </div>
+    <div className="nav">
+      <button onClick={() => navigateTo('/')}>Home</button>
+      <button onClick={() => navigateTo('/about')}>About this Data</button>
+      {/* <button onClick={() => navigateTo('/Australian-data')}>Australian Data</button> */}
+      <button onClick={() => navigateTo('/countries')}>Other Country Data</button>
+    </div>
   )
 }; // Menu()
 export default Menu;

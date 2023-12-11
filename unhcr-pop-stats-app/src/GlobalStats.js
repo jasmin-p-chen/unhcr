@@ -1,74 +1,76 @@
-import { useState, useEffect } from 'react';
-import { useAxios } from './useAxios';
-import GlobalChart from './chartComponents/GlobalChart';
-import { useGlobalPopTypeFilter } from './useGlobalPopTypeFilter';
 import Chart from "chart.js/auto";
+import { useState } from 'react';
 import { CategoryScale } from "chart.js";
-import { testChartData } from "./testChartData";
+import { useAxios } from './useAxios';
+import dataFilter from './dataFilter';
 import PieChart from "./chartComponents/PieChart";
 
 Chart.register(CategoryScale);
 
 function GlobalStats () {
-  // console.log(`hello world!`)
 
-  const {loading, results, error} = useAxios("https://api.unhcr.org/population/v1/population/?limit=10000&yearFrom=2023&yearTo=2023&coo_all=true&coa_all=true");
+  const [ chartData, setChartData ] = useState({ });
 
-  const globalData = results;
-  const globalTotals = useGlobalPopTypeFilter(results);
-  // chart
-  const [chartData, setChartData] = useState({});
+  const { loading, results, error } = useAxios("https://api.unhcr.org/population/v1/population/?limit=10000&yearFrom=2023&yearTo=2023&coo_all=true&coa_all=true");
 
-    if (loading === false && chartData.datasets === undefined) {
- 
-      setChartData(
-        {
-          labels: globalTotals.map((data) => data.name), 
-          datasets: [
-            {
-              label: "Population",
-              data: globalTotals.map((data) => data.total),
-              backgroundColor: [
-                "#1c3e35",
-                "#315c4f",
-                "#467a69",
-                "#5b9883",
-                "#6fb69d",
-                "#86baa1",
-                "#99f2d1",
-              ],
-              borderColor: "white",
-              borderWidth: 1
-            }
-          ]
-        }
-      )
-    }; // end chart
+  const globalTotals = dataFilter.globalFilter(results);
+
+    // chart
+  if (loading === false && chartData.datasets === undefined) {
+
+    setChartData(
+      {
+        labels: globalTotals.map((data) => data.name), 
+        datasets: [
+          {
+            label: "Population",
+            type: 'doughnut',
+            data: globalTotals.map((data) => data.total),
+            backgroundColor: [
+              "#1c3e35",
+              "#315c4f",
+              "#467a69",
+              "#5b9883",
+              "#6fb69d",
+              "#86baa1",
+              "#99f2d1",
+            ],
+            borderColor: "white",
+            borderWidth: 1
+          }
+        ]
+      }
+    )
+  }; // end chart
+
+
 
   return (
-    <div className="main">
-      { loading
-        ? <p>Loading...</p>
-        : null
-      }
-
+    <div>
       { error
         ? <p>Unable to load data. Please try again later.</p>
-        : null 
+        : console.log(`no error`)
       }
 
-      {
+      { loading
+        ? <p>Loading data from UNHCR...</p>
+        : 
         chartData.datasets !== undefined
         ?
-        <PieChart chartData={chartData} />
-        : null
+        <div id="global-container">
+          <div>
+            <PieChart chartData={chartData} />
+          </div>
+
+          <div>
+            <ul id="global-stats">
+            { globalTotals.map( popType => <li>{popType.name}: {new Intl.NumberFormat("en", {notation: "compact", compactDisplay: "long"}).format(popType.total)}</li> )}
+            </ul> 
+          </div>
+
+        </div>
+        : console.log(``)
       }
-      <div>
-        <ul>
-        { globalTotals.map( popType => <li>Total {popType.name}: {new Intl.NumberFormat().format(popType.total)}</li> )}
-        </ul>
-        
-      </div>
     </div>
   )
 }; // GlobalStats()

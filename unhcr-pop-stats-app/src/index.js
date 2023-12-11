@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 // import './index.css';
-import PopulationStatsApp from './PopulationStatsApp';
+import App from './App';
 // import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
-    <PopulationStatsApp />
+    <App />
   // </React.StrictMode>
 );
 

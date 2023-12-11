@@ -59,7 +59,7 @@ function CountryList () {
         {displayList.map(country => <li
           id={ country.name }
           key={ country.code }
-          onClick={ () => { navigateTo( `/${ params.yearNum }/countries/${ country.code }`)}}>
+          onClick={ () => { navigateTo( `/countries/${ country.code }/${ country.name }`)}}>
            {country.name} </li>)}
       </ul>
       } 
@@ -68,3 +68,5 @@ function CountryList () {
   )
 }; // CountryList()
 export default CountryList;
+
+// /${ params.yearNum }
