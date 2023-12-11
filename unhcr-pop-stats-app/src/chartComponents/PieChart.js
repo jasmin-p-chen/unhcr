@@ -4,8 +4,8 @@ import { Pie } from "react-chartjs-2";
 function PieChart({ chartData }) {
   return (
     <div className="chart-container">
-      <h2 style={{ textAlign: "center" }}>Pie Chart</h2>
-      <Pie
+      <h2 style={{ textAlign: "center" }}>UNHCR Population Data for 2023</h2>
+      <Pie className="canvas"
         data={chartData}
         options={{
           plugins: {

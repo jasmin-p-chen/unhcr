@@ -5,16 +5,16 @@ import { useState } from 'react';
 // Otherwise could add a region?
 // Maybe something to do with includes()?
 
-function CountryFilter () {
+function CountryFilter ({filterCountryList}) {
 
-  const [ query, setQuery ] = useState( '' ); //state for searchQuery
+  // const [ query, setQuery ] = useState( '' ); //state for searchQuery
   const navigateTo = useNavigate();
   const params = useParams();
   // console.log(params);
 
   function handleSubmit ( ev ){
     ev.preventDefault();
-    console.log(`Search input given is`, query );
+    // console.log(`Search input given is`, query );
     // navigateTo(`search/${ query }`);
   }; // handleSubmit
   
@@ -22,7 +22,7 @@ function CountryFilter () {
   
   const handleChange = (ev) => {
     console.log(ev.target.value); // to test
-    setQuery(ev.target.value.toLowerCase());
+    filterCountryList(ev.target.value.toLowerCase())
   };
 
   return (
@@ -30,7 +30,7 @@ function CountryFilter () {
     <label>Start typing Country or Territory to filter
       <input 
       type="text"
-      value={ query } 
+      // value={ query } 
       onChange={ handleChange } />
       <button>Search</button>
     </label>

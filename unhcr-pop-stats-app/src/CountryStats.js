@@ -1,4 +1,4 @@
-import { useDataFilter } from './useDataFilter';
+import { useDataFilter } from './dataFilter';
 
 function CountryStats ({details}) {
 

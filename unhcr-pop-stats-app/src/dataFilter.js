@@ -1,9 +1,8 @@
 // Custom hook for filtering Country demographic data received from Axios requests
 
 function useDataFilter (popArray) {
-  
   // console.log(popArray); // to test
-
+  
   let men = 0;
   let women = 0; 
   let infants = 0;
