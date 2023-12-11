@@ -20,15 +20,18 @@ function CountryFilter () {
   
   //attempting to make the Search work
   
-  function handleChange(ev){
-    console.log(ev.target.value);
-    setQuery(ev.target.value);
+  const handleChange = (ev) => {
+    console.log(ev.target.value); // to test
+    setQuery(ev.target.value.toLowerCase());
   };
 
   return (
   <form className="searchform" onSubmit={ handleSubmit }>
     <label>Start typing Country or Territory to filter
-      <input type="text" onChange={ handleChange } />
+      <input 
+      type="text"
+      value={ query } 
+      onChange={ handleChange } />
       <button>Search</button>
     </label>
   </form>
