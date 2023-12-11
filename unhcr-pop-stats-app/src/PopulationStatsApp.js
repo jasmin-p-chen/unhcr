@@ -5,18 +5,19 @@ import GlobalStats from './GlobalStats';
 import SearchForm from './SearchForm';
 import CountryList from './CountryList';
 import CountryDetails from './CountryDetails';
+import Menu from './Menu';
 
 function PopulationStatsApp() {
   return (
-  <div className="container">
+  <div>
     <Router>
-      <div className="nav"> <Link to="./">Home</Link> </div>
+    <div className="nav"> <Link to="./">Home</Link> </div>
+    <Menu />
       <Routes>   
-        <Route path="/" exact element={
-          <div className="main">
-            <div>
-              <Link to="./"><h1>Global Statistics on Forced Displacement</h1></Link>
-            </div>
+        <Route path="/" exact element={ <div className="main">
+          <header>
+            <h1>Global Statistics on Forced Displacement</h1>
+          </header>
             <GlobalStats />
             <SearchForm />
           </div> }>
@@ -28,5 +29,4 @@ function PopulationStatsApp() {
   </div>
   );
 } // PopulationStatsApp()
-
 export default PopulationStatsApp;

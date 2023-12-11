@@ -16,13 +16,11 @@ function GlobalStats () {
 
   const globalData = results;
   const globalTotals = useGlobalPopTypeFilter(results);
-  console.log(globalData);
-  console.log(global.totals);
-
   // chart
   const [chartData, setChartData] = useState({});
 
     if (loading === false && chartData.datasets === undefined) {
+ 
       setChartData(
         {
           labels: globalTotals.map((data) => data.name), 
