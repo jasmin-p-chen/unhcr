@@ -1,8 +1,8 @@
 import { Bar } from "react-chartjs-2";
 
 function GlobalChart ({chartData, chartLabels}) {
-  // console.log(chartData); // to test
-  // console.log(chartLabels); // to test
+  console.log(chartData); // to test
+  console.log(chartLabels); // to test
 
 //   const labels = chartLabels;
 //   const data = {

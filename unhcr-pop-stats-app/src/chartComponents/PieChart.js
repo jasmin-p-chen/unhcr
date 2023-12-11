@@ -11,7 +11,7 @@ function PieChart({ chartData }) {
           plugins: {
             title: {
               display: true,
-              text: "Population"
+              text: "UNHCR Population Data 2023"
             }
           }
         }}

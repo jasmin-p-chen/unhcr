@@ -1,8 +1,9 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 
-// Not sure if it's possible to get the search form to link to the mapped countries ?
+// Not sure how to get this search form to filter mapped countries ?
 // Otherwise could add a region?
+// Maybe something to do with includes()?
 
 function CountryFilter () {
 

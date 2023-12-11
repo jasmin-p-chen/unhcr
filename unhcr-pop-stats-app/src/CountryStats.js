@@ -3,7 +3,12 @@ import { useDataFilter } from './useDataFilter';
 function CountryStats ({details}) {
 
   console.log(`details: `, details);
+  // details.length > 0
+  // ?
   // const arrivalCountry = details[0].coa_name;
+  // :
+  // <p>No data</p>
+
   // const year = details[0].year;
 
   const refugees = [];
@@ -83,10 +88,12 @@ function CountryStats ({details}) {
 
   return ( 
   <div className="main">
-    {/* <h1>{arrivalCountry}</h1> */}
-    {/* {totalForciblyDisplaced
-    // ? <p>There were {new Intl.NumberFormat().format(totalForciblyDisplaced)} forcibly displaced people located in {arrivalCountry} in {year}</p>
-    : null} */}
+    {details.length > 0
+    ? <h1>{details[0].coa_name}</h1>
+    : <p>No data available</p>}
+    {totalForciblyDisplaced
+    ? <p>There were {new Intl.NumberFormat().format(totalForciblyDisplaced)} forcibly displaced people located in {details[0].coa_name} in {details[0].year}</p>
+    : null}
     {refugeeDemo.totalPop
     ? <p>Refugees: {new Intl.NumberFormat().format(refugeeDemo.totalPop)}</p>
     : null}
