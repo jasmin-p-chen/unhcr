@@ -55,13 +55,13 @@ function GlobalStats () {
         chartData.datasets !== undefined
         ?
         <div id="global-container">
-          <div id="global-chart-container">
+          <div id="global-chart">
             <PieChart chartData={chartData} />
           </div>
 
           <div id="global-stats">
-            <ul>
-            { globalTotals.map( popType => <li>{popType.name}: {new Intl.NumberFormat("en", {notation: "compact", compactDisplay: "long"}).format(popType.total)}</li> )}
+            <ul id="global-list">
+            { globalTotals.map( popType => <li className="global-dot">{popType.name}: {new Intl.NumberFormat("en", {notation: "compact", compactDisplay: "long"}).format(popType.total)}</li> )}
             </ul> 
           </div>
         </div>
@@ -71,16 +71,3 @@ function GlobalStats () {
   )
 }; // GlobalStats()
 export default GlobalStats;
-
-  // const dataMap = globalData.map((country) => {
-  //   return country.refugees
-  // });
-  // // console.log(dataMap); // to test
-  // const dataMapNums = dataMap.map(num => {return parseInt(num)});
-  
-  // // console.log(dataMapNums); // to test
-  // const totalRefugees = dataMapNums.reduce((num1, num2) => num1 + num2, 0 );
-  // // console.log(totalRefugees);
-
-  // // const dataLabels = globalData.map((c) => {return c.coo_name});
-  // // console.log(dataLabels);

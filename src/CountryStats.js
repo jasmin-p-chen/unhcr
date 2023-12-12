@@ -1,5 +1,6 @@
 import dataFilter from './dataFilter';
-import genderData from './genderData';
+
+// in need of some serious refactoring
 
 function CountryStats ({details}) {
   // console.log(`details: `, details); // to test
@@ -65,7 +66,7 @@ function CountryStats ({details}) {
   const otherDemo = dataFilter.countryDemographics(others);
   // const unclassifiedDemo = dataFilter.countryDemographics(unclassified); // need to look at the data
   const demographicsData = [refugeeDemo, asylumSeekerDemo, statelessDemo, internallyDisplacedDemo, otherDemo];
-  const ageDistdata = genderData(demographicsData);
+  const ageData = dataFilter.genderData(demographicsData);
 
   const totalForciblyDisplaced = 
   refugeeDemo.totalPop + 
@@ -124,7 +125,6 @@ function CountryStats ({details}) {
   );
 }; // CountryStats()
 export default CountryStats;
-
 
   // const totalUnRefugees = refugees.reduce((num1, num2) => num1 + num2, 0 );
   // const totalUnAsylumSeekers = asylumSeekers.reduce((num1, num2) => num1 + num2, 0 );

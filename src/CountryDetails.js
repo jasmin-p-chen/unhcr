@@ -1,12 +1,14 @@
 import { useParams } from 'react-router-dom';
 import { useAxios } from './useAxios'; 
-import CountryStats from './CountryStats';
-import Chart from "chart.js/auto";
 import { CategoryScale } from "chart.js";
 import { useState } from "react";
+import Chart from "chart.js/auto";
+import CountryStats from './CountryStats';
 import GenderChart from './chartComponents/GenderChart';
-import AgeDistributionChart from './chartComponents/AgeDistributionChart';
+import AgeChart from './chartComponents/AgeChart';
 import SearchForm from './SearchForm';
+
+// Yet to get the two Charts working on this page. Advice welcome!
 
 Chart.register(CategoryScale);
 
@@ -36,18 +38,18 @@ function CountryDetails () {
         <div id="country-stats">
           <CountryStats details={results} />
 
-          { AgeDistributionChart.datasets !== undefined
+          { AgeChart.datasets !== undefined
           ? <div>
-            <AgeDistributionChart />
+            <AgeChart />
             </div>
-          : console.log(`error`)
+          : null
           }
 
           { GenderChart.datasets !== undefined
           ? <div>
             <GenderChart />
             </div>
-          : console.log(`error`)
+          : null
           }
 
         </div>

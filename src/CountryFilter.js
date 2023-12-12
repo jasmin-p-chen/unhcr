@@ -1,10 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 
-// Not sure how to get this search form to filter mapped countries ?
-// Otherwise could add a region?
-// Maybe something to do with includes()?
-
 function CountryFilter ( {onFilterActive} ) {
 
   const [ query, setQuery ] = useState( '' ); //state for searchQuery
@@ -18,13 +14,10 @@ function CountryFilter ( {onFilterActive} ) {
     textFilter.value = '';
   }; // handleSubmit
   
-  //attempting to make the Search work
-  
   const handleChange = (ev) => {
-    console.log(ev.target.value); // to test
-    setQuery(ev.target.value);
-    onFilterActive(ev.target.value);
-  };
+    setQuery( ev.target.value );
+    onFilterActive( ev.target.value );
+  }; // handleChange
 
   return (
   <form className="searchform" >
@@ -33,7 +26,7 @@ function CountryFilter ( {onFilterActive} ) {
       type="text"
       id="textFilter"
       onChange={ handleChange } />
-      <button onClick={handleClear}>Clear</button>
+      <button onClick={ handleClear } >Clear</button>
     </label>
   </form>
   );

@@ -1,12 +1,11 @@
-
-import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import CountryFilter from './CountryFilter';
+import { useState } from 'react';
 import { useAxios } from './useAxios';
+import CountryFilter from './CountryFilter';
 
 function CountryList () {
   // console.log(`Hello Countries of the World!`);
-  // const [ query, setQuery ] = useState( '' ); //state for searchQuery
+ 
   const [filterCountries, setFilterCountries] = useState( null ); // the results array
  
   const navigateTo = useNavigate();
@@ -25,19 +24,12 @@ function CountryList () {
     }
   }
 
-  if (loading === false) {
-    
-  
-
-  }
   let displayList = results;
   if (filterCountries !== null) {
     displayList = filterCountries
   }
 
   return (
-
-
     <div>
       <div>
         <CountryFilter onFilterActive={handleFilter}/>
@@ -60,10 +52,9 @@ function CountryList () {
           id={ country.name }
           key={ country.code }
           onClick={ () => { navigateTo( `/countries/${ country.code }/${ country.name }/2022`)}}>
-           {country.name} </li>)}
+          { country.name } </li>)}
       </ul>
       } 
-
     </div>
   )
 }; // CountryList()

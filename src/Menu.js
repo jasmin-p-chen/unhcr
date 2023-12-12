@@ -8,7 +8,6 @@ function Menu () {
     <div className="nav">
       <button onClick={() => navigateTo('/')}>Home</button>
       <button onClick={() => navigateTo('/about')}>About</button>
-      {/* <button onClick={() => navigateTo('/Australian-data')}>Australian Data</button> */}
       <button onClick={() => navigateTo('/countries')}>Country Data</button>
     </div>
   )

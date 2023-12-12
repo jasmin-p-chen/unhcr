@@ -1,5 +1,7 @@
 import { Bar } from "react-chartjs-2";
-// import { chartData } from "../testChartData";
+import '../App.css';
+
+// Yet to populate and deploy this component.
 
 function GenderChart ({ chartData }) {
   return (

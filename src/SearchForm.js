@@ -10,15 +10,12 @@ function SearchForm ({ handleSearch }) {
 
   function handleSubmit(ev) {
     ev.preventDefault();
-    console.log(`hi:`, year);
-    console.log(typeof year);
     const yearNum = parseInt(year);
-    console.log(`Year num is:`, yearNum);
-    if (yearNum <= 2023 && yearNum >= 2003 ) {
-      navigateTo(`/countries/${params.id}/${params.name}/${yearNum}`)
-      // onSearch(yearNum);
+    // console.log(`Year is:`, yearNum);
+    if ( yearNum <= 2023 && yearNum >= 2003 ) {
+      navigateTo(`/countries/${params.id}/${params.name}/${yearNum}`);
     } else {
-      setYear( 101 ); // need to give users a message
+      setYear( 101 ); // signal to users
     }
   }; // handleSubmit()
 
@@ -36,31 +33,6 @@ function SearchForm ({ handleSearch }) {
       </label>
       <button>Search</button>
     </form>
-    
   )
-
-  // function handleSubmit ( ev ){
-  //   ev.preventDefault();
-  //   console.log(`Search input given is`, query );
-  //   navigateTo(`search/${ query }`);
-  // }; // handleSubmit
-
-
-
-
-
-
-
-
-
-
- // END OF Trying something
-
-
-
-  // const navigateTo = useNavigate();
-  // return (
-  //   <button onClick={ () => navigateTo(`./countries`) }>Search Countries</button>
-  // )
 }; // SearchForm()
 export default SearchForm;

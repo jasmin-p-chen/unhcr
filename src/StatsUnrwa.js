@@ -2,6 +2,8 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
+// This component has not been incorported yet
+
 function StatsUnrwa () {
 
   const params = useParams();

@@ -1,7 +1,9 @@
 import { Bar } from "react-chartjs-2";
 import '../App.css';
 
-function AgeDistributionChart ( {chartData} ) {
+// Yet to populate and deploy this component.
+
+function AgeChart ( {chartData} ) {
   console.log(chartData); // to test
   return (
     <div className="chart-container">
@@ -22,5 +24,5 @@ function AgeDistributionChart ( {chartData} ) {
       />
     </div>
   );
-}; // AgeDistributionChart()
-export default AgeDistributionChart;
+}; // AgeChart()
+export default AgeChart;

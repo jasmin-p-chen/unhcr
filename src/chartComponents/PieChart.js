@@ -1,7 +1,6 @@
-import { Pie } from "react-chartjs-2";
 import { Doughnut } from "react-chartjs-2";
 
-function PieChart({ chartData }) {
+function GlobalChart({ chartData }) {
   return (
     <div className="chart-container">
       <h2 style={{ textAlign: "center" }}>UNHCR Population Data for 2023</h2>
@@ -28,5 +27,5 @@ function PieChart({ chartData }) {
       />
     </div>
   );
-}
-export default PieChart;
+} // GlobalChart()
+export default GlobalChart;
