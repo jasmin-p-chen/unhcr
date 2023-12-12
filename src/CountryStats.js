@@ -1,8 +1,9 @@
 import dataFilter from './dataFilter';
+import ageDistrChartData from './ageDistrChartData';
 
 function CountryStats ({details}) {
 
-  console.log(`details: `, details);
+  // console.log(`details: `, details); // to test
 
   const refugees = [];
   const asylumSeekers = [];
@@ -59,12 +60,16 @@ function CountryStats ({details}) {
     }
   };
 
+
+
   const refugeeDemo = dataFilter.countryDemographics(refugees);
   const asylumSeekerDemo = dataFilter.countryDemographics(asylumSeekers);
   const statelessDemo = dataFilter.countryDemographics(stateless);
   const internallyDisplacedDemo = dataFilter.countryDemographics(internallyDisplaced);
   const otherDemo = dataFilter.countryDemographics(others);
   // const unclassifiedDemo = dataFilter.countryDemographics(unclassified); // need to look at the data
+  const demographicsData = [refugeeDemo, asylumSeekerDemo, statelessDemo, internallyDisplacedDemo, otherDemo];
+  const ageDistdata = ageDistrChartData(demographicsData);
 
   const totalForciblyDisplaced = 
   refugeeDemo.totalPop + 

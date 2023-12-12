@@ -92,7 +92,7 @@ const dataFilter = {
   }, // globalFilter()
 
   populationType (popArray) {
-    // console.log(popArray); // to test
+    console.log(popArray); // to test
     const refugees = [];
     const asylumSeekers = [];
     const returned = [];
@@ -163,7 +163,7 @@ const dataFilter = {
   }, // populationType()
 
   countryDemographics (popArray) {
-    // console.log(popArray); // to test
+    console.log(popArray); // to test
     
     let men = 0;
     let women = 0; 
@@ -193,6 +193,13 @@ const dataFilter = {
     }
   
   }, // countryDemographics()
+
+  ageDistribution (countryDemographicsdata) {
+
+    console.log(`hi`);
+
+
+  },
 
 }; // dataFilter{}
 
