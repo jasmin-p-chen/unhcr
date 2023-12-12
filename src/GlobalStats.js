@@ -14,7 +14,6 @@ function GlobalStats () {
   const { loading, results, error } = useAxios("https://api.unhcr.org/population/v1/population/?limit=10000&yearFrom=2023&yearTo=2023&coo_all=true&coa_all=true");
 
   const globalTotals = dataFilter.globalFilter(results);
-
     // chart
   if (loading === false && chartData.datasets === undefined) {
 
@@ -43,8 +42,6 @@ function GlobalStats () {
     )
   }; // end chart
 
-
-
   return (
     <div>
       { error
@@ -58,16 +55,15 @@ function GlobalStats () {
         chartData.datasets !== undefined
         ?
         <div id="global-container">
-          <div>
+          <div id="global-chart-container">
             <PieChart chartData={chartData} />
           </div>
 
-          <div>
-            <ul id="global-stats">
+          <div id="global-stats">
+            <ul>
             { globalTotals.map( popType => <li>{popType.name}: {new Intl.NumberFormat("en", {notation: "compact", compactDisplay: "long"}).format(popType.total)}</li> )}
             </ul> 
           </div>
-
         </div>
         : console.log(``)
       }

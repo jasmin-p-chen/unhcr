@@ -1,10 +1,12 @@
 import { useParams } from 'react-router-dom';
-import CountryStats from './CountryStats';
 import { useAxios } from './useAxios'; 
-import AgeDistributionChart from './chartComponents/AgeDistributionChart';
+import CountryStats from './CountryStats';
 import Chart from "chart.js/auto";
 import { CategoryScale } from "chart.js";
 import { useState } from "react";
+import GenderChart from './chartComponents/GenderChart';
+import AgeDistributionChart from './chartComponents/AgeDistributionChart';
+import SearchForm from './SearchForm';
 
 Chart.register(CategoryScale);
 
@@ -13,11 +15,11 @@ function CountryDetails () {
   const params = useParams();
   const [chartData, setChartData] = useState({ });
 
-  const { loading, results, error } = useAxios(`https://api.unhcr.org/population/v1/demographics/?limit=10000yearFrom=${params.yearNum}&yearTo=${params.yearNum}&coo_all=true&coa=${params.id}&ptype_show=true`);
+  const { loading, results, error } = useAxios(`https://api.unhcr.org/population/v1/demographics/?limit=10000&yearFrom=${params.yearNum}&yearTo=${params.yearNum}&coo_all=true&coa=${params.id}&ptype_show=true`);
 
     return (
 
-    <div className="main">
+    <div id="country-page">
       { error
       ? <p>Unable to load data. Please try again later.</p>
       :
@@ -31,18 +33,25 @@ function CountryDetails () {
         <div>
           <h1>{params.name}</h1>
         </div>
-        <div>
+        <div id="country-stats">
           <CountryStats details={results} />
+
           { AgeDistributionChart.datasets !== undefined
           ? <div>
             <AgeDistributionChart />
             </div>
           : console.log(`error`)
           }
-          <div>
-            <genderChart />
+
+          { GenderChart.datasets !== undefined
+          ? <div>
+            <GenderChart />
             </div>
+          : console.log(`error`)
+          }
+
         </div>
+        <SearchForm />
       </div>
       } 
     </div>

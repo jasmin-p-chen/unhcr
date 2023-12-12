@@ -15,7 +15,7 @@ function CountryList () {
   const { loading, results, error } = useAxios( "https://api.unhcr.org/population/v1/countries/" );
 
   function handleFilter (query) {
-    console.log(`hi`, query);
+  
     if (query.length > 0) {
       query = query.toLowerCase();
       const filtered = results.filter( c => c.name.toLowerCase().includes(query) );
@@ -55,11 +55,11 @@ function CountryList () {
       ?
       <p>loading data...</p>
       :
-      <ul>
-        {displayList.map(country => <li
+      <ul className="country-ul">
+        {displayList.map(country => <li className="country-list"
           id={ country.name }
           key={ country.code }
-          onClick={ () => { navigateTo( `/countries/${ country.code }/${ country.name }`)}}>
+          onClick={ () => { navigateTo( `/countries/${ country.code }/${ country.name }/2022`)}}>
            {country.name} </li>)}
       </ul>
       } 

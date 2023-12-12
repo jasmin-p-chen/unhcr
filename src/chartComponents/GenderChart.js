@@ -1,7 +1,7 @@
 import { Bar } from "react-chartjs-2";
-import { chartData } from "../testChartData";
+// import { chartData } from "../testChartData";
 
-export const BarChart = ({ chartData }) => {
+function GenderChart ({ chartData }) {
   return (
     <div className="chart-container">
       <h2 style={{ textAlign: "center" }}>Bar Chart</h2>
@@ -11,7 +11,7 @@ export const BarChart = ({ chartData }) => {
           plugins: {
             title: {
               display: true,
-              text: "Users Gained between 2016-2020"
+              text: "Forcibly displaced people by reported gender"
             },
             legend: {
               display: false
@@ -21,4 +21,5 @@ export const BarChart = ({ chartData }) => {
       />
     </div>
   );
-};
+}; // GenderChart()
+export default GenderChart;

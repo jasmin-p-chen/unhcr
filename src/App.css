@@ -2,14 +2,10 @@
 body {
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1.15rem;
-  margin: 0px;
+  margin: 0 auto;
   width: 100%;
   text-align: center;
 }
-
-#root {
-  width: 100%;
- }
 
 input, button {
   font-family: inherit;
@@ -27,21 +23,29 @@ header {
   padding: 2rem;
 }
 
+li {
+  text-decoration: none;
+}
+
 #global-container {
-  /* position: relative; */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  max-width: 2000px;
+  grid-template-columns: 1fr, 1fr;
   margin: 10rem auto;
   gap: 2rem;
-  align-content:space-around;
+
+
 }
 
 .main {
+  max-width: 2000px;
+  width: 80%;
   display: flex;
-  flex-direction: row;
-  width: 95%;
+  flex-direction: column;
   margin: 0 auto;
+  position: relative;
 }
 
 .canvas {
@@ -54,6 +58,8 @@ header {
   padding: 1rem 0px 0px 1rem;
   font-size: 1.25rem;
 }
+
+
 
 .nav a {
   text-decoration: none;
@@ -71,40 +77,50 @@ header {
   width: 100px;
 }
 
-
-
 h1 {
   text-decoration: none;
   color: black;
   text-align: center;
 }
 
-ul {
+.country-ul {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 1rem;
   width: 90%;
 }
 
-li {
+.country-list {
   list-style-type: none;
   padding: 1rem;
   border: 1px solid black;
 }
 
-li:hover {
+.country-list:hover {
   cursor: pointer;
   background-color: rgb(255, 255, 255);
   color: rgb(60, 107, 88);
-  border: 2px solid rgb(60, 107, 88);
+  border: 3px solid rgb(60, 107, 88);
 }
 
 #global-stats  {
+  max-width: 50%;
+  position: relative;
+  float: left;
   border: none;
+  font-size: 1.5rem;
   font-weight: 600;
   color: rgb(169, 7, 50);
+  text-align: left;
+  list-style-type: none;
+  line-height: 2.25;
   }
 
+  #global-chart-container {
+    max-width: 500px;
+    position: relative;
+    float: left;
+  }
 .searchform {
   margin: 2rem;
   padding: 2rem;
@@ -114,7 +130,45 @@ li:hover {
   width: 300px;
 }
 
-@media (max-width: 700px) {
+#country-stats {
+  display: flex;
+  flex-direction: column;
+}
+#cs-list-1 {
+  list-style-type: none;
+  line-height: 2;
+  background:rgb(243, 254, 250);
+  padding: 2rem;
+}
+
+#cs-subtitle {
+  font-size: 1.4rem;
+}
+
+#about {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 1000px;
+  text-align: left;
+}
+.hidden{
+  display: none;
+}
+
+.clickable:hover {
+  cursor: pointer;
+  color:rgb(169, 7, 50);
+}
+
+#warning {
+  color:rgb(169, 7, 50);
+}
+#terms li {
+  list-style-type: none;
+} 
+ 
+@media (max-width: 600px) {
   .main {
     display: flex;
     flex-direction: column;
@@ -125,10 +179,25 @@ li:hover {
   .pie {
     width: 450px;
   }
-}
 
-@media (max-width: 450px) {
+  .nav {
+    padding: 1rem 0px 0px 0px;
+    font-size: 1rem;
+  }
+} 
+
+ @media (max-width: 450px) {
   .pie {
     width: 300px;
+  }
+  .nav {
+    display: flex;
+    flex-direction: row;
+  }
+  .nav button {
+    border: none;
+    background-color: rgb(60, 107, 88);
+    color: white;
+
   }
 }

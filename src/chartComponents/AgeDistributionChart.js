@@ -12,7 +12,7 @@ function AgeDistributionChart ( {chartData} ) {
           plugins: {
             title: {
               display: true,
-              text: "Forcibly displaced people by reported gender"
+              text: "Forcibly displaced people by age"
             },
             legend: {
               display: false

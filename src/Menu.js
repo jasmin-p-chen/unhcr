@@ -7,9 +7,9 @@ function Menu () {
   return (
     <div className="nav">
       <button onClick={() => navigateTo('/')}>Home</button>
-      <button onClick={() => navigateTo('/about')}>About this Data</button>
+      <button onClick={() => navigateTo('/about')}>About</button>
       {/* <button onClick={() => navigateTo('/Australian-data')}>Australian Data</button> */}
-      <button onClick={() => navigateTo('/countries')}>Other Country Data</button>
+      <button onClick={() => navigateTo('/countries')}>Country Data</button>
     </div>
   )
 }; // Menu()

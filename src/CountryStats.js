@@ -1,10 +1,8 @@
 import dataFilter from './dataFilter';
-import ageDistrChartData from './ageDistrChartData';
+import genderData from './genderData';
 
 function CountryStats ({details}) {
-
   // console.log(`details: `, details); // to test
-
   const refugees = [];
   const asylumSeekers = [];
   const returned = [];
@@ -60,8 +58,6 @@ function CountryStats ({details}) {
     }
   };
 
-
-
   const refugeeDemo = dataFilter.countryDemographics(refugees);
   const asylumSeekerDemo = dataFilter.countryDemographics(asylumSeekers);
   const statelessDemo = dataFilter.countryDemographics(stateless);
@@ -69,7 +65,7 @@ function CountryStats ({details}) {
   const otherDemo = dataFilter.countryDemographics(others);
   // const unclassifiedDemo = dataFilter.countryDemographics(unclassified); // need to look at the data
   const demographicsData = [refugeeDemo, asylumSeekerDemo, statelessDemo, internallyDisplacedDemo, otherDemo];
-  const ageDistdata = ageDistrChartData(demographicsData);
+  const ageDistdata = genderData(demographicsData);
 
   const totalForciblyDisplaced = 
   refugeeDemo.totalPop + 
@@ -77,29 +73,24 @@ function CountryStats ({details}) {
   internallyDisplacedDemo.totalPop + 
   otherDemo.totalPop;
 
-  // console.log(`refugees: `, refugeeDemo);
-  // console.log(`asylumnSeeekrs: `, asylumSeekerDemo);
-  // console.log(`stateless: `, statelessDemo);
-  // console.log(`internal displacement: `,internallyDisplacedDemo);
-  // console.log(`others: `, otherDemo);
-  // console.log(`unclassified: `, unclassifiedDemo);
+  console.log(demographicsData);
 
   return ( 
-  <div className="main">
-    {details.length > 0
+  <div id="cs-container">
+    { 
+    details.length <= 0
     ? 
-    details === true
-    : 
     <p>No data is available</p>
-    }
-
-    {totalForciblyDisplaced
+    :
+    totalForciblyDisplaced
     ? 
-    <p>There were {new Intl.NumberFormat().format(totalForciblyDisplaced)} forcibly displaced people located in {details[0].coa_name} in {details[0].year}</p>
+    <div id="cs-subtitle">
+      <p>There were {new Intl.NumberFormat().format(totalForciblyDisplaced)} forcibly displaced people located in {details[0].coa_name} in {details[0].year}.</p>
+    </div>
     : 
     null
     }
-    <ul>
+    <ul id="cs-list-1">
     {refugeeDemo.totalPop
     ? 
     <li>Refugees: {new Intl.NumberFormat().format(refugeeDemo.totalPop)}</li>

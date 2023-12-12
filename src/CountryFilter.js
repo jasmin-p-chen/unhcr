@@ -12,9 +12,10 @@ function CountryFilter ( {onFilterActive} ) {
   const params = useParams();
   // console.log(params);
 
+  const textFilter = document.querySelector("#textFilter")
   function handleClear ( ev ){
     ev.preventDefault();
-    // input.value = '';
+    textFilter.value = '';
   }; // handleSubmit
   
   //attempting to make the Search work
@@ -23,7 +24,6 @@ function CountryFilter ( {onFilterActive} ) {
     console.log(ev.target.value); // to test
     setQuery(ev.target.value);
     onFilterActive(ev.target.value);
-
   };
 
   return (
@@ -32,9 +32,8 @@ function CountryFilter ( {onFilterActive} ) {
       <input 
       type="text"
       id="textFilter"
-      // value={setQuery} 
       onChange={ handleChange } />
-      <button onClick={ handleClear }>Clear</button>
+      <button onClick={handleClear}>Clear</button>
     </label>
   </form>
   );

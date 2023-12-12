@@ -19,9 +19,10 @@ function PopulationStatsApp() {
           <GlobalStats />
           </div> }>
           </Route>
-        <Route path="about" elements={ <About /> }></Route>
+        <Route path="about" element={ <About /> }></Route>
         <Route path="countries" element={ <CountryList /> }></Route>
         <Route path="countries/:id/:name" element={ <CountryDetails /> }></Route>
+        <Route path="countries/:id/:name/:yearNum" element={ <CountryDetails /> }></Route>
       </Routes>
     </Router>
   </div>
