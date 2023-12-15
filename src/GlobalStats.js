@@ -3,39 +3,41 @@ import { useState } from 'react';
 import { CategoryScale } from "chart.js";
 import { useAxios } from './useAxios';
 import dataFilter from './dataFilter';
-import PieChart from "./chartComponents/PieChart";
+import GlobalChart from "./chartComponents/PieChart";
+// import GlobalChartData from './GlobalChartData';
 
 Chart.register(CategoryScale);
 
-function GlobalStats () {
+function GlobalStats (props) {
 
-  const [ chartData, setChartData ] = useState({ });
+  const [ chartData, setChartData ] = useState({ }); // saving Chart Data in state
+ 
+  const globalTotals = dataFilter.globalFilter(props.results); // passing results to dataFilter to get totals
 
-  const { loading, results, error } = useAxios("https://api.unhcr.org/population/v1/population/?limit=10000&yearFrom=2023&yearTo=2023&coo_all=true&coa_all=true");
+  if (props.loading === false && chartData.datasets === undefined) { // check that results have loaded and chart data has not!
 
-  const globalTotals = dataFilter.globalFilter(results);
-    // chart
-  if (loading === false && chartData.datasets === undefined) {
+  const asyData = dataFilter.asyDataFilter(props.results); // passing results to dataFilter to return asylum seeker data
+  console.log(asyData);
+  dataFilter.asyGlobalTotal(props.results); // passing results to dataFilter to return global totals
 
+    // setting ChartData right here, but could maybe send to its own component
     setChartData(
       {
-        labels: globalTotals.map((data) => data.name), 
+        labels: globalTotals.map((data) => data.name), // defining labels
         datasets: [
           {
-            label: "Population",
-            type: 'doughnut',
-            data: globalTotals.map((data) => data.total),
-            backgroundColor: [
-              "#1c3e35",
-              "#315c4f",
-              "#467a69",
-              "#5b9883",
-              "#6fb69d",
-              "#86baa1",
-              "#99f2d1",
+            type: 'doughnut', // defining chart type
+            data: globalTotals.map((data) => data.total), // defining data 
+            axis: 'y',
+            backgroundColor: [ // setting colours for each doughnut piece
+              "#009995",
+              "#00ccc7",
+              "#006663",
+              "#004d4b",
             ],
             borderColor: "white",
-            borderWidth: 1
+            borderWidth: 3,
+            hoverOffset: 10,
           }
         ]
       }
@@ -43,31 +45,28 @@ function GlobalStats () {
   }; // end chart
 
   return (
-    <div>
-      { error
-        ? <p>Unable to load data. Please try again later.</p>
-        : console.log(`no error`)
-      }
 
-      { loading
+    <div>
+      { props.error
+        ? <p>Unable to load data. Please try again later.</p>
+        : 
+        props.loading
         ? <p>Loading data from UNHCR...</p>
         : 
         chartData.datasets !== undefined
         ?
-        <div id="global-container">
-          <div id="global-chart">
-            <PieChart chartData={chartData} />
+        <>
+          <GlobalChart chartData={chartData} />
+          <div>
+            <h2>Worldwide there are: </h2>
+            <ul>
+              { globalTotals.map( popType => <li className="home-list">{new Intl.NumberFormat("en", {notation: "compact", compactDisplay: "long"}).format(popType.total)} {(popType.name).toLowerCase()} </li> )}
+            </ul>
           </div>
-
-          <div id="global-stats">
-            <ul id="global-list">
-            { globalTotals.map( popType => <li className="global-dot">{popType.name}: {new Intl.NumberFormat("en", {notation: "compact", compactDisplay: "long"}).format(popType.total)}</li> )}
-            </ul> 
-          </div>
-        </div>
-        : console.log(``)
-      }
-    </div>
+        </>
+        : null
+        }
+      </div>
   )
 }; // GlobalStats()
 export default GlobalStats;

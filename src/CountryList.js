@@ -17,7 +17,7 @@ function CountryList () {
   
     if (query.length > 0) {
       query = query.toLowerCase();
-      const filtered = results.filter( c => c.name.toLowerCase().includes(query) );
+      const filtered = results.filter( c => c.name.toLowerCase().startsWith(query) );
       setFilterCountries(filtered);
     } else {
       setFilterCountries( null );
@@ -29,10 +29,19 @@ function CountryList () {
     displayList = filterCountries
   }
 
+  //TRYING TO GET THE SEARCH BAR TO TAKE USER STRAIGHT TO THE COUNTRY THEY TYPE
+
+  // function searchCountry (text) {
+  //   if (text.length > 3 && results.filter( c => c.name.toLowerCase().startsWith(text.toLowerCase()) {
+  //     navigateTo( `/countries/${ country.code }/${ country.name }/2022`);
+  //   })) 
+  // had put onSubmit={searchCountry} as an attribute of COuntryFilter below
+  // }
+
   return (
     <div>
       <div>
-        <CountryFilter onFilterActive={handleFilter}/>
+        <CountryFilter onFilterActive={handleFilter} />
       </div>
       {
       error

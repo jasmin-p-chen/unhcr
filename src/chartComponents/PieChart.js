@@ -1,30 +1,16 @@
 import { Doughnut } from "react-chartjs-2";
+import { Bar } from 'react-chartjs-2';
 
 function GlobalChart({ chartData }) {
   return (
-    <div className="chart-container">
-      <h2 style={{ textAlign: "center" }}>UNHCR Population Data for 2023</h2>
+    <div className="global-chart">
       <Doughnut
         data={chartData}
-        options={{
-          plugins: {
-            title: {
-              display: true,
-              legend: {
-                display: true,
-                position: "right",
-                align: 'start',
-                boxHeight: 40,
-                boxWidth: 40,
-              text: "UNHCR Population Data 2023",
-              font: {
-                size: 30,
-                }
-              }
-            }
-          }
-        }}
-      />
+        fallbackContent={"Doughnut shaped chart representing the number of refugees, asylum seekers, people who are experiencing internal displacement and other people of concern to UNHCR." }
+        // options={{
+        //   indexAxis: 'y',   
+        // }}
+        />
     </div>
   );
 } // GlobalChart()

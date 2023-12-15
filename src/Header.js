@@ -1,8 +1,6 @@
 function Header () {
   return (
-  <header>
-    <h1>Global Statistics on Forced Displacement</h1>
-  </header>
+    <h1>Asylum Seeker Statistics</h1>
   )
 }; // Header()
 export default Header;

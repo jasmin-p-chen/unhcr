@@ -2,15 +2,15 @@
 
 /* Table of functions:
 
-1. asyDataFilter: Data filter for results from the population API related to asylum seekers
-2. globalFilter:  Data filter for forcibly displaced group totals using the population API. 
+1. asyDataFilter: Data filter returns all asylum seeker results from the population API.
+2. globalFilter:  Data filter returns forcibly displaced group totals using the population API. 
                   See Line # for available categories and definitions.
                   NEED TO FINISH REFACTORING
 */
 
 const dataFilter = {
 
-  // filter data for forcibly displaced groups using the population API. See Line # for available categories and definitions.
+  // returns all asylum seeker results from the population API.
   asyDataFilter ( data ) {
     // console.log(`bigData:`, data); // testing
     const asylumSs = []; // Array to keep results related to Asylum Seekers
@@ -23,38 +23,41 @@ const dataFilter = {
         asylumSs.push(country); // pushing relevant results to the asylumSs array
       }
     });
-    // console.log(`asylum`, asylumSs); // returns 4400+ objects
+    console.log(`asylum`, asylumSs); // returns 4400+ objects
     return asylumSs;
-    },
+  }, // asyDataFilter()
 
+  // returns totaled asylum seeker results from the population API.
+  asyGlobalTotal (results) {
+  const asyNums = results.map( (country) => { return parseInt(country.asylum_seekers) } );
+  const result = asyNums.reduce( (num1, num2) => num1 + num2, 0 );
+  return result;
+  }, // asyGlobalTotal()
+
+// returns global totals for UNCHR categories: asylumSs, refugees, intDispl, othersOf
   globalFilter ( data ) {
-    const displaced = []; // Array to keep filtered results
-  
-  // refugees, refLikes, asylumSs, othersIn, intDispl,
-  const refugees = data.map((country) => { return parseInt(country.refugees) });
-  const asylum_seekers = data.map((country) => { return parseInt(country.asylum_seekers) });
-  const idps = data.map((country) => { return parseInt(country.idps) });
-  const ooc = data.map((country) => { return parseInt(country.ooc) });
-  const hst = data.map((country) => { return parseInt(country.hst) }); // different stats
-  const oip = data.map((country) => { return parseInt(country.oip) }); // returned NaN - bug to fix
+    
+  const asylumSs = data.map( (country) => { return parseInt(country.asylum_seekers) } );
+  const refugees = data.map( (country) => { return parseInt(country.refugees) } );
+  const intDispl = data.map( (country) => { return parseInt(country.idps) } );
+  const othersOf = data.map( (country) => { return parseInt(country.ooc) } );
 
-  function reduceStats (population) {
-    const result = population.reduce((num1, num2) => num1 + num2, 0 );
+  function mapCatNums ( data, cat ) {
+    const catNums = data.map( ( record ) => { return parseInt(record.cat) } );
+    return catNums; 
+  } 
+
+  function reduceStats ( population ) {
+    const result = population.reduce( (num1, num2) => num1 + num2, 0 );
     return result;
   }; // reduceStats()
   
     const globalRefugees = reduceStats(refugees);
-    const globalAsylumSeekers = reduceStats(asylum_seekers);
-    const globalInDisplaced = reduceStats(idps);
-    const globalOthersOfConcern = reduceStats(ooc);
+    const globalAsylumSeekers = reduceStats(asylumSs);
+    const globalInDisplaced = reduceStats(intDispl);
+    const globalOthersOfConcern = reduceStats(othersOf);
   
     // const globalRefugees = new Intl.NumberFormat("en", {notation: "compact", compactDisplay: "long"}).format(reduceStats(refugees));
-    // const globalAsylumSeekers = new Intl.NumberFormat("en", {notation: "compact", compactDisplay: "long"}).format(reduceStats(asylum_seekers));
-    // const globalStateless = new Intl.NumberFormat("en", {notation: "compact", compactDisplay: "long"}).format(reduceStats(stateless));
-    // const globalInDisplaced = new Intl.NumberFormat("en", {notation: "compact", compactDisplay: "long"}).format(reduceStats(idps));
-    // // const globalOthersInNeed = new Intl.NumberFormat("en", {notation: "compact", compactDisplay: "long"}).format(reduceStats(oip));
-    // const globalOthersOfConcern = new Intl.NumberFormat("en", {notation: "compact", compactDisplay: "long"}).format(reduceStats(ooc));
-  
     const popTypes = [
       {
         id: 1,
@@ -72,9 +75,9 @@ const dataFilter = {
   
       {
         id: 6,
-        key: "keyps",
+        key: "idps",
         name: "Internally Displaced People",
-        total: globalRefugees,
+        total: globalInDisplaced,
       }, 
   
       {
