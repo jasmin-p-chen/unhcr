@@ -20,7 +20,7 @@ function SearchForm ({ handleSearch }) {
   }; // handleSubmit()
 
   return (
-    <form onSubmit={ handleSubmit }>
+    <form id="country-search-form" onSubmit={ handleSubmit }>
       {
       year === 101
       ?
@@ -28,7 +28,7 @@ function SearchForm ({ handleSearch }) {
       : 
       null
       }
-      <label>You can search for data between
+      <label>You can search for data by year (between 2003-23)
         <input type="text" placeholder="2003-2023" id="year" inputMode="numeric" onChange={ ev => setYear(ev.target.value)}></input>
       </label>
       <button>Search</button>

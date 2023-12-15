@@ -95,6 +95,16 @@ li {
   border: none;
 }
 
+#country-charts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#country-search-form {
+  padding: 2rem;
+}
+
 /* #global-container {
   display: flex;
   flex-direction: row;
@@ -116,6 +126,10 @@ li {
 #global-chart-container {
   max-width: 50%;
 } */
+
+.chart-container {
+  max-width: 900px;
+}
 
 .searchform {
   margin: 2rem;
@@ -162,10 +176,10 @@ li {
   color:rgb(169, 7, 50);
 }
 
-#gender-chart {
+/* #gender-chart {
   max-width: 400px;
 
-}
+} */
  
 @media (max-width: 1200px) {
 
@@ -186,14 +200,14 @@ li {
   }
 }
 
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
 
   .main {
     display: flex;
     flex-direction: column;
     width: 95%;
     margin: 0 auto;
-  }
+  } */
 
   /* .pie {
     width: 450px;
@@ -203,17 +217,5 @@ li {
     padding: 1rem 0px 0px 0px;
     font-size: 1rem;
   } */
-} 
+/* }  */
 
-@media (max-width: 450px) {
-
-  /* .pie {
-  width: 300px;
-  } */
-
-  /* .nav {
-  display: flex;
-  flex-direction: row;
-  } */
-
-}

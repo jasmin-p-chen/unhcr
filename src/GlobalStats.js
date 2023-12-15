@@ -1,7 +1,6 @@
 import Chart from "chart.js/auto";
 import { useState } from 'react';
 import { CategoryScale } from "chart.js";
-import { useAxios } from './useAxios';
 import dataFilter from './dataFilter';
 import GlobalChart from "./chartComponents/PieChart";
 // import GlobalChartData from './GlobalChartData';
@@ -17,7 +16,7 @@ function GlobalStats (props) {
   if (props.loading === false && chartData.datasets === undefined) { // check that results have loaded and chart data has not!
 
   const asyData = dataFilter.asyDataFilter(props.results); // passing results to dataFilter to return asylum seeker data
-  console.log(asyData);
+  // console.log(asyData); // testing
   dataFilter.asyGlobalTotal(props.results); // passing results to dataFilter to return global totals
 
     // setting ChartData right here, but could maybe send to its own component
@@ -28,7 +27,6 @@ function GlobalStats (props) {
           {
             type: 'doughnut', // defining chart type
             data: globalTotals.map((data) => data.total), // defining data 
-            axis: 'y',
             backgroundColor: [ // setting colours for each doughnut piece
               "#009995",
               "#00ccc7",

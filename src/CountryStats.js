@@ -77,50 +77,18 @@ function CountryStats ({details}) {
   console.log(demographicsData);
 
   return ( 
-  <div id="cs-container">
+  <div id="country-summary">
     { 
     details.length <= 0
     ? 
     <p>No data is available</p>
     :
     totalForciblyDisplaced
-    ? 
-    <div id="cs-subtitle">
-      <p>There were {new Intl.NumberFormat().format(totalForciblyDisplaced)} forcibly displaced people located in {details[0].coa_name} in {details[0].year}.</p>
-    </div>
+    ?
+    <p>In {details[0].year}, there were {new Intl.NumberFormat().format(totalForciblyDisplaced)} forcibly displaced people recorded in {details[0].coa_name} and {new Intl.NumberFormat().format(asylumSeekerDemo.totalPop)} asylum seekers.</p>
     : 
     null
     }
-    <ul id="cs-list-1">
-    {refugeeDemo.totalPop
-    ? 
-    <li>Refugees: {new Intl.NumberFormat().format(refugeeDemo.totalPop)}</li>
-    : 
-    null}
-    {asylumSeekerDemo.totalPop
-    ? 
-    <li>Asylum Seekers: {new Intl.NumberFormat().format(asylumSeekerDemo.totalPop)}</li>
-    : 
-    null
-    }
-    {statelessDemo.totalPop
-    ? 
-    <li>Stateless: {new Intl.NumberFormat().format(statelessDemo.totalPop)}</li>
-    : 
-    null
-    }
-    {internallyDisplacedDemo.totalPop
-    ? 
-    <li>Internally Displaced: {new Intl.NumberFormat().format(internallyDisplacedDemo.totalPop)}</li>
-    : 
-    null
-    }
-    {otherDemo.totalPop
-    ? 
-    <li>Others of concern to UNHCR: {new Intl.NumberFormat().format(otherDemo.totalPop)}</li>
-    : 
-    null}
-    </ul>
   </div>
   );
 }; // CountryStats()

@@ -8,6 +8,7 @@ function GenderChart ({ chartDataG }) {
   return (
     <div className="chart-container">
       <h2 style={{ textAlign: "center" }}>Gender Distribution</h2>
+      <p>Figures by reported gender</p>
       <Bar
         data={chartDataG}
         options={{

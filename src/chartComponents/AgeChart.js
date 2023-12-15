@@ -3,23 +3,15 @@ import '../App.css';
 
 // Yet to populate and deploy this component.
 
-function AgeChart ( {chartData} ) {
-  console.log(chartData); // to test
+function AgeChart ( {chartDataA} ) {
+  console.log(chartDataA); // to test
   return (
     <div className="chart-container">
-      <h2 style={{ textAlign: "center" }}>Bar Chart</h2>
+      <h2 style={{ textAlign: "center" }}>Age Distribution</h2>
       <Bar
-        data={chartData}
+        data={chartDataA}
         options={{
-          plugins: {
-            title: {
-              display: true,
-              text: "Forcibly displaced people by age"
-            },
-            legend: {
-              display: false
-            }
-          }
+          indexAxis: 'y',   
         }}
       />
     </div>

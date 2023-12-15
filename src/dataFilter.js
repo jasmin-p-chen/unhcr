@@ -174,11 +174,44 @@ const dataFilter = {
   
   }, // countryDemographics()
 
-  ageDistribution (countryDemographicsdata) {
+  ageData (results) {
+  // console.log(results); // to test
+  
+  const ageData = [
+    {
+      id: 1,
+      name: "0-4",
+      total: results.infants 
+    },
 
-    console.log(`hi`);
+    {
+      id: 2,
+      name: "4-12",
+      total: results.children,
+    },
 
-  },
+    {
+      id: 3,
+      name: "13-18",
+      total: results.teens,
+    },
+
+    {
+      id: 4,
+      name: "18-59",
+      total: results.adults,
+    },
+
+    {
+      id: 5,
+      name: "over 60s",
+      total: results.over60s,
+    },
+  ];
+
+  return ageData;
+
+}, // ageData()
 
   genderData (filteredResults) {
   
@@ -207,37 +240,7 @@ const dataFilter = {
 
 export default dataFilter;
 
-// function useDataFilter (popArray) {
-//   // console.log(popArray); // to test
-  
-//   let men = 0;
-//   let women = 0; 
-//   let infants = 0;
-//   let children = 0;
-//   let teens = 0;
-//   let adults = 0;
-//   let over60s = 0;
-  
-//   let originCountries = [];
-//   let totalPop = 0;
 
-//   for (const cohort of popArray) {
-//   originCountries.push({ coo_name: cohort.coo_name, total: cohort.total });
-//   totalPop += parseInt(cohort.total);
-//   women += parseInt(cohort.f_total);
-//   men += parseInt(cohort.m_total);
-//   infants += (parseInt(cohort.m_0_4) + parseInt(cohort.f_0_4));
-//   children += (parseInt(cohort.m_5_11) + parseInt(cohort.f_5_11));
-//   teens += (parseInt(cohort.m_12_17) + parseInt(cohort.f_12_17));
-//   adults += (parseInt(cohort.m_18_59) + parseInt(cohort.f_18_59));
-//   over60s += (parseInt(cohort.m_60) + parseInt(cohort.f_60));
-//   }
-
-//   return {
-//     totalPop, originCountries, women, men, infants, children, teens, adults, over60s
-//   }
-
-// }; // useDataFilter()
 // export { useDataFilter };
 
 /*  Available categories and definitions 

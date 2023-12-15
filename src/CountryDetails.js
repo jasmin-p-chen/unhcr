@@ -15,27 +15,60 @@ Chart.register(CategoryScale);
 
 function CountryDetails () {
 
-  const params = useParams();
-  const [chartDataG, setChartDataG] = useState({ });
+  const params = useParams(); // activating useParams
+  const [chartDataG, setChartDataG] = useState({ }); // State to store age data
+  const [chartDataA, setChartDataA] = useState({ }); // State to store gender data
 
+  // using custom hook to send Axios request to return demographic data disaggregated by country
   const { loading, results, error } = useAxios(`https://api.unhcr.org/population/v1/demographics/?limit=10000&yearFrom=${params.yearNum}&yearTo=${params.yearNum}&coo_all=true&coa=${params.id}&ptype_show=true`);
 
-  const filteredResults = dataFilter.countryDemographics(results);
-  //Gender chart
-  const genderResults = dataFilter.genderData(filteredResults);
-  // console.log(genderResults);
+  // passing request result to dataFilter to return filtered results
+  const filteredResults = dataFilter.countryDemographics(results); 
 
-    // chart
-  if (loading === false && chartDataG.datasets === undefined) {
+  // passing filtred results to dataFilter to return data for age chart
+  const ageResults = dataFilter.ageData(filteredResults);
+  // console.log(`age:`, ageResults); // testing
+
+  // passing filtred results to dataFilter to return data for gender chart
+  const genderResults = dataFilter.genderData(filteredResults);
+  // console.log(genderResults); // testing
+
+  // setting age demographics chart data into state
+  if (loading === false && chartDataA.datasets === undefined) { // conditions for data to be set
+
+    setChartDataA(
+      {
+        labels: ageResults.map((data) => data.name), 
+        // mapping ageResults array to generate chart labels
+        datasets: [
+          {
+            label: "Age",
+            type: 'bar',
+            data: ageResults.map((data) => data.total),
+            // mapping ageResults array to generate chart data
+            backgroundColor: [
+              "#99f2d1",
+            ],
+            borderColor: "white",
+            borderWidth: 1
+          }
+        ]
+      }
+    )
+  }; // age chart data set
+
+  if (loading === false && chartDataG.datasets === undefined) { // conditions for data to be set
 
     setChartDataG(
       {
         labels: genderResults.map((data) => data.name), 
+        // mapping genderResults array to generate chart labels
         datasets: [
           {
             label: "Population",
             type: 'bar',
             data: genderResults.map((data) => data.total),
+            // mapping genderResults array to generate chart data
             backgroundColor: [
               "#1c3e35",
               "#99f2d1",
@@ -46,58 +79,47 @@ function CountryDetails () {
         ]
       }
     )
-  }; // end chart
+  }; // gender chart data set
 
     return (
 
     <div id="country-page">
       { error
       ? <p>Unable to load data. Please try again later.</p>
-      :
-      console.log(`no error`)
-      }
-      { loading
+      : 
+      loading
       ? 
       <p>Loading...</p>
       :
       <div>
-        <div>
+          <SearchForm />
           <h1>{params.name}</h1>
-        </div>
-        <div id="country-stats">
-          <div>
+        <div id="country-details">
           <CountryStats details={results} />
-          </div>
-
-          {/* <div>
-            <p>Hello</p>
-          </div> */}
-
-          { AgeChart.datasets !== undefined
-          ? <div>
-            <AgeChart />
-            </div>
+          <div id="country-charts">
+          { loading
+          ?   
+          <p>Loading data from UNHCR...</p>
+          : chartDataA !== undefined
+          ? 
+          <AgeChart chartDataA={chartDataA}/>
           : null
           }
 
-          {/* <div>
-            <p>Hello</p>
-          </div> */}
-
-          {/* { loading
+          { loading
         ? <p>Loading data from UNHCR...</p>
         : chartDataG !== undefined
           ? 
-          <div id="gender-chart">
             <GenderChart chartDataG={chartDataG} />
-            </div>
-          : <p>no chart today</p>
-          } */}
+          : <p>chart unavailable</p>
+          }
 
         </div>
-        <SearchForm />
-      </div>
-      } 
+
+      </div> 
+
+    </div>
+    }
     </div>
     );
 }; // CountryDetails()
