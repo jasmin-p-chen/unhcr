@@ -9,6 +9,8 @@ This App is the final project of a 12-week part-time JavaScript Course run by Ge
 - using React
 - Routing
 
+[Visit the site! (It's a work in progress)](https://jasmin-p-chen.github.io/unhcr/)
+
 ## About the Pop Data App
 ## App Features
 
@@ -32,6 +34,7 @@ I found the UNHCR API while I was searching for data about refugees, for my own 
 I had quite a few concerns about how much I would be able to achieve with that was different from the UNHCR data finder, but even recreating a portion of it would be flexing all the learning of the past 12 weeks, so I decided to dive in.
 
 ## Wireframe and Design
+[rough sketch of the plan]('./unhcr-sketch.png')
 - I wanted to include some global stats on the front page and then link people to a list of countries, so they could search for more detailed Country statistics.
 - I wanted the look to be as clean and accessible as possible. 
 - The main design challenge is to try and add charts to visually represent the data.
@@ -48,3 +51,8 @@ It was such a mess I felt like the best thing to do was to start a new repo, but
 - ["Removing folders within directories in git"](https://www.youtube.com/watch?v=BEE66nNi-3c) video from Alanna Risse
 
 ## Next Steps
+
+There is so much to do to improve the site and to learn. The most pressing issues are:
+- ### getting a better grasp on chart.js: I'll be adding more charts to build this skill.
+- ### thinking more carefully about purpose and audience
+      Despite the fact that the aim of this project was to demonstrate skills learned in the GA JavaScript Course, if people are going to visit, it is important to me that the site has a clear purpose and narrative. That is going to mean thinking more about how to present the stats and content in a meaningul and acesssible way.
