@@ -34,7 +34,7 @@ I found the UNHCR API while I was searching for data about refugees, for my own 
 I had quite a few concerns about how much I would be able to achieve with that was different from the UNHCR data finder, but even recreating a portion of it would be flexing all the learning of the past 12 weeks, so I decided to dive in.
 
 ## Wireframe and Design
-[rough sketch of the plan]('./unhcr-sketch.png')
+[!rough sketch of the plan]('./unhcr-sketch.png')
 - I wanted to include some global stats on the front page and then link people to a list of countries, so they could search for more detailed Country statistics.
 - I wanted the look to be as clean and accessible as possible. 
 - The main design challenge is to try and add charts to visually represent the data.

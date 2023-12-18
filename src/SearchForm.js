@@ -2,11 +2,12 @@ import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 
-function SearchForm ({ handleSearch }) {
+function SearchForm ({ handleSearch}) {
   //Trying something
   const [year, setYear ] = useState( 2022 );
   const params = useParams();
   const navigateTo = useNavigate();
+  const input = document.querySelector("#input");
 
   function handleSubmit(ev) {
     ev.preventDefault();
@@ -17,22 +18,26 @@ function SearchForm ({ handleSearch }) {
     } else {
       setYear( 101 ); // signal to users
     }
+    input.value = "";
   }; // handleSubmit()
 
   return (
-    <form id="country-search-form" onSubmit={ handleSubmit }>
-      {
-      year === 101
-      ?
-      <p id="warning">Data on this app is only available between 2003 and 2023. Please try a different year or try the UNCHR Data Finder.</p>
-      : 
-      null
+  <div>
+      <form id="country-search-form" onSubmit={ handleSubmit }>
+      {year === 101
+        ?
+        <p id="warning">Data on this app is only available between 2003 and 2023. Please try a different year or try the UNCHR Data Finder.</p>
+        :
+        null
       }
-      <label>You can search for data by year (between 2003-23)
-        <input type="text" placeholder="2003-2023" id="year" inputMode="numeric" onChange={ ev => setYear(ev.target.value)}></input>
-      </label>
-      <button>Search</button>
+        <label>Search for data by year (between 2003-23)
+          <input type="text" placeholder="2003-2023" id="input" inputMode="numeric" onChange={ ev => setYear(ev.target.value)}> 
+          </input>
+        </label>
+        <button>Search</button>
     </form>
+
+  </div>
   )
 }; // SearchForm()
 export default SearchForm;
