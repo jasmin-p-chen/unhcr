@@ -96,7 +96,7 @@ function CountryDetails () {
           <h1>{params.name}</h1>
         <div id="country-details">
           <CountryStats details={results} />
-          <div id="country-charts">
+          {/* <div id="country-charts">
           { loading
           ?   
           <p>Loading data from UNHCR...</p>
@@ -104,17 +104,17 @@ function CountryDetails () {
           ? 
           <AgeChart chartDataA={chartDataA}/>
           : null
-          }
+          } */}
 
-          { loading
+          {/* { loading
         ? <p>Loading data from UNHCR...</p>
         : chartDataG !== undefined
           ? 
             <GenderChart chartDataG={chartDataG} />
           : <p>chart unavailable</p>
-          }
+          } */}
 
-        </div>
+        {/* </div> */}
 
       </div> 
 
