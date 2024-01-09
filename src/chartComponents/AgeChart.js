@@ -3,13 +3,13 @@ import '../App.css';
 
 // Yet to populate and deploy this component.
 
-function AgeChart ( {chartDataA} ) {
-  console.log(chartDataA); // to test
+function AgeChart ( { chartData } ) {
+  console.log( chartData ); // to test
   return (
     <div className="chart-container">
       <h2 style={{ textAlign: "center" }}>Age Distribution</h2>
       <Bar
-        data={chartDataA}
+        data={ chartData }
         options={{
           indexAxis: 'y',   
         }}

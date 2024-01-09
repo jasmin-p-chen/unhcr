@@ -2,8 +2,8 @@ import Chart from "chart.js/auto";
 import { useState } from 'react';
 import { CategoryScale } from "chart.js";
 import dataFilter from './dataFilter';
-import GlobalChart from "./chartComponents/PieChart";
-// import GlobalChartData from './GlobalChartData';
+import GlobalChart from "./chartComponents/GlobalChart";
+import ChartDataGlobal from './ChartDataGlobal';
 
 Chart.register(CategoryScale);
 
@@ -53,14 +53,14 @@ function GlobalStats (props) {
         : 
         chartData.datasets !== undefined
         ?
-        <>
-          <GlobalChart chartData={chartData} />
+        <> 
           <div>
             <h2>Worldwide there are: </h2>
             <ul>
               { globalTotals.map( popType => <li className="home-list">{new Intl.NumberFormat("en", {notation: "compact", compactDisplay: "long"}).format(popType.total)} {(popType.name).toLowerCase()} </li> )}
             </ul>
           </div>
+          <ChartDataGlobal globalTotals={ globalTotals } />
         </>
         : null
         }

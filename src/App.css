@@ -155,6 +155,10 @@ li {
   font-size: 1.4rem;
 } */
 
+#gender-chart {
+  width: 400px;
+}
+
 #about {
   display: flex;
   flex-direction: column;

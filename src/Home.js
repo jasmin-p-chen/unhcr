@@ -1,13 +1,13 @@
 import Intro from './Intro';
 import Header from './Header';
-import GlobalChart from './GlobalChart';
+import ChartDataGlobal from './ChartDataGlobal';
 import GlobalStats from './GlobalStats';
 import Chart from "chart.js/auto";
 import { useState } from 'react';
 import { CategoryScale } from "chart.js";
 import { useAxios } from './useAxios';
 import dataFilter from './dataFilter';
-import PieChart from "./chartComponents/PieChart";
+import GlobalChart from "./chartComponents/GlobalChart";
 
 function Home () {
   // Using a custom hook to make an axios request to Population API data for 2023
@@ -30,7 +30,6 @@ function Home () {
         <div id="home-content">
           <Intro loading={loading} error={error} total={total} />
           <GlobalStats loading={loading} error={error} results={results} />
-          <GlobalChart  />
         </div>
         }
     </div>
