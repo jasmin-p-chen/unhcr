@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/unhcr/static/css/main.c7139442.css",
-    "main.js": "/unhcr/static/js/main.94c60261.js",
+    "main.css": "/unhcr/static/css/main.fa83b1cb.css",
+    "main.js": "/unhcr/static/js/main.7c8e7445.js",
     "index.html": "/unhcr/index.html",
-    "main.c7139442.css.map": "/unhcr/static/css/main.c7139442.css.map",
-    "main.94c60261.js.map": "/unhcr/static/js/main.94c60261.js.map"
+    "main.fa83b1cb.css.map": "/unhcr/static/css/main.fa83b1cb.css.map",
+    "main.7c8e7445.js.map": "/unhcr/static/js/main.7c8e7445.js.map"
   },
   "entrypoints": [
-    "static/css/main.c7139442.css",
-    "static/js/main.94c60261.js"
+    "static/css/main.fa83b1cb.css",
+    "static/js/main.7c8e7445.js"
   ]
 }
