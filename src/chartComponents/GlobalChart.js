@@ -6,9 +6,6 @@ function GlobalChart({ chartData }) {
       <Bar
         data={chartData}
         fallbackContent={"Doughnut shaped chart representing the number of refugees, asylum seekers, people who are experiencing internal displacement and other people of concern to UNHCR." }
-        // options={{
-        //   indexAxis: 'y',   
-        // }}
         />
     </div>
   );

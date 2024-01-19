@@ -25,7 +25,8 @@ function GlobalStats (props) {
         labels: globalTotals.map((data) => data.name), // defining labels
         datasets: [
           {
-            type: 'doughnut', // defining chart type
+            type: 'bar', // defining chart type
+            indexAxis: 'y',
             data: globalTotals.map((data) => data.total), // defining data 
             backgroundColor: [ // setting colours for each doughnut piece
               "#009995",
@@ -34,7 +35,7 @@ function GlobalStats (props) {
               "#004d4b",
             ],
             borderColor: "white",
-            borderWidth: 3,
+            borderWidth: 5,
             hoverOffset: 10,
           }
         ]

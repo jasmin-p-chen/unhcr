@@ -10,6 +10,8 @@ function ChartDataGlobal ( globalTotals ) {
       datasets: [
         {
           type: 'bar', // defining chart type
+          indexAxis: 'y',
+          responsive: true,
           data: globalTotals.map((data) => data.total), // defining data 
           backgroundColor: [ // setting colours for each doughnut piece
             "#009995",
@@ -18,9 +20,16 @@ function ChartDataGlobal ( globalTotals ) {
             "#004d4b",
           ],
           borderColor: "white",
-          borderWidth: 3,
+          borderWidth: 0,
           hoverOffset: 10,
-        }
+          options: {
+            plugins: {
+              legend: {
+                display: false,
+              }
+            }
+          }
+      }
       ]
     }
   )
